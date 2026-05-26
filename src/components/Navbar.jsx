@@ -1,8 +1,17 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/style.css";
 import Banner from "../assets/Img/navbar.png";
 
 export default function Navbar() {
+    const [menuOpen, setMenuOpen] = useState(false);
+    const [dropdownOpen, setDropdownOpen] = useState(false);
+
+    const fecharMenu = () => {
+        setMenuOpen(false);
+        setDropdownOpen(false);
+    };
+
     return (
         <header className="navbar">
             <div className="navbar-container">
@@ -10,23 +19,45 @@ export default function Navbar() {
                     <img src={Banner} alt="Cooperativa Ecolimpo" />
                 </div>
 
-                <nav className="navbar-menu" aria-label="Navegação principal">
-                    <Link to="/">Início</Link>
-                    <Link to="/quem-somos">Quem somos</Link>
+                <button
+                    className="menu-toggle"
+                    type="button"
+                    onClick={() => setMenuOpen(!menuOpen)}
+                    aria-label="Abrir menu"
+                >
+                    ☰
+                </button>
 
-                    <div className="dropdown">
-                        <button className="dropdown-btn" type="button" aria-haspopup="true">
+                <nav
+                    className={`navbar-menu ${menuOpen ? "active" : ""}`}
+                    aria-label="Navegação principal"
+                >
+                    <Link to="/" onClick={fecharMenu}>Início</Link>
+                    <Link to="/quem-somos" onClick={fecharMenu}>Quem somos</Link>
+
+                    <div className={`dropdown ${dropdownOpen ? "active" : ""}`}>
+                        <button
+                            className="dropdown-btn"
+                            type="button"
+                            aria-haspopup="true"
+                            onClick={() => setDropdownOpen(!dropdownOpen)}
+                        >
                             Coleta seletiva ▾
                         </button>
 
                         <div className="dropdown-menu">
-                            <Link to="/coleta-seletiva/slu">SLU</Link>
-                            <Link to="/condominio">Condomínios</Link>
+                            <Link to="/coleta-seletiva/slu" onClick={fecharMenu}>SLU</Link>
+                            <Link to="/condominio" onClick={fecharMenu}>Condomínios</Link>
                         </div>
                     </div>
 
-                    <Link to="/educacao-ambiental">Educação ambiental</Link>
-                    <Link to="/contato">Contato</Link>
+                    <Link to="/educacao-ambiental" onClick={fecharMenu}>
+                        Educação ambiental
+                    </Link>
+
+                    <Link to="/contato" onClick={fecharMenu}>
+                        Contato
+                    </Link>
                 </nav>
             </div>
         </header>
