@@ -1,4 +1,4 @@
-import React from "react";
+import { Link } from "react-router-dom";
 import { FaWhatsapp, FaInstagram, FaFacebookF, FaMapMarkerAlt } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import "../styles/style.css";
@@ -7,7 +7,6 @@ export default function Footer() {
     return (
         <footer className="footer" id="contato">
             <div className="footer-container">
-
                 <div className="footer-brand">
                     <h2>Cooperativa Ecolimpo</h2>
                     <p>
@@ -18,10 +17,11 @@ export default function Footer() {
 
                 <div className="footer-links">
                     <h3>Navegação</h3>
-                    <a href="#inicio">Início</a>
-                    <a href="#quem-somos">Quem somos</a>
-                    <a href="#coleta-seletiva">Coleta seletiva</a>
-                    <a href="#educacao-ambiental">Educação ambiental</a>
+                    <Link to="/">Início</Link>
+                    <Link to="/quem-somos">Quem somos</Link>
+                    <Link to="/coleta-seletiva/slu">Coleta seletiva</Link>
+                    <Link to="/condominio">Condomínios</Link>
+                    <Link to="/educacao-ambiental">Educação ambiental</Link>
                 </div>
 
                 <div className="footer-contact">
@@ -32,12 +32,12 @@ export default function Footer() {
                         São Sebastião - DF
                     </p>
 
-                    <a href="mailto:contato@ecolimpo.com.br">
+                    <a href="mailto:cooperativaecolimpodf@gmail.com">
                         <MdEmail />
-                        coopertivaecolimpodf@gmail.com
+                        cooperativaecolimpodf@gmail.com
                     </a>
 
-                    <a href="https://wa.me/556198237-2013" target="_blank" rel="noreferrer">
+                    <a href="https://wa.me/5561982372013" target="_blank" rel="noreferrer">
                         <FaWhatsapp />
                         WhatsApp
                     </a>
@@ -47,22 +47,29 @@ export default function Footer() {
                     <h3>Redes sociais</h3>
 
                     <div className="social-icons">
-                        <a href="https://www.instagram.com/" aria-label="Instagram">
+                        <a
+                            href="https://www.instagram.com/"
+                            target="_blank"
+                            rel="noreferrer"
+                            aria-label="Instagram da Ecolimpo"
+                        >
                             <FaInstagram />
                         </a>
 
-                        <a href="https://www.facebook.com/cooperativaecolimpo/" aria-label="Facebook">
+                        <a
+                            href="https://www.facebook.com/cooperativaecolimpo/"
+                            target="_blank"
+                            rel="noreferrer"
+                            aria-label="Facebook da Ecolimpo"
+                        >
                             <FaFacebookF />
                         </a>
                     </div>
                 </div>
-
             </div>
 
             <div className="footer-bottom">
-                <p>
-                    © 2026 Cooperativa Ecolimpo. Todos os direitos reservados.
-                </p>
+                <p>© 2026 Cooperativa Ecolimpo. Todos os direitos reservados.</p>
             </div>
         </footer>
     );

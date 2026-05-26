@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import "../styles/style.css";
 import Cooperados from "../assets/Img/Cooperados.jpeg";
-
 
 export default function Home() {
     useEffect(() => {
@@ -10,10 +10,14 @@ export default function Home() {
         const objectives = document.querySelector(".home-objectives");
         const services = document.querySelector(".services");
 
-        setTimeout(() => image?.classList.add("show"), 200);
-        setTimeout(() => history?.classList.add("show"), 700);
-        setTimeout(() => objectives?.classList.add("show"), 1100);
-        setTimeout(() => services?.classList.add("show"), 1400);
+        const timers = [
+            setTimeout(() => image?.classList.add("show"), 200),
+            setTimeout(() => history?.classList.add("show"), 700),
+            setTimeout(() => objectives?.classList.add("show"), 1100),
+            setTimeout(() => services?.classList.add("show"), 1400),
+        ];
+
+        return () => timers.forEach(clearTimeout);
     }, []);
 
     return (
@@ -26,7 +30,6 @@ export default function Home() {
 
                     <div className="home-content">
                         <span className="home-subtitle">Nossa história</span>
-
                         <h1>Cooperativa Ecolimpo</h1>
 
                         <p>
@@ -85,8 +88,6 @@ export default function Home() {
                     <h2>Nossos Serviços</h2>
 
                     <div className="services-grid">
-
-                        {/* SERVIÇO 1 */}
                         <div className="service-card">
                             <h3>Coleta Seletiva</h3>
                             <p>
@@ -95,53 +96,43 @@ export default function Home() {
                             </p>
                         </div>
 
-                        {/* SERVIÇO 2 */}
                         <div className="service-card">
                             <h3>Educação Ambiental</h3>
                             <p>
                                 Promovemos palestras e ações educativas em empresas, escolas e
-                                instituições, incentivando a consciência ambiental de forma prática e educativa.
+                                instituições, incentivando a consciência ambiental de forma prática.
                             </p>
                         </div>
 
-                        {/* SERVIÇO 3 */}
                         <div className="service-card">
                             <h3>Gincanas Sustentáveis</h3>
                             <p>
                                 Realizamos gincanas educativas em escolas, incentivando alunos a
-                                praticarem a coleta seletiva de forma divertida, promovendo
-                                consciência ambiental desde cedo.
+                                praticarem a coleta seletiva de forma divertida.
                             </p>
                         </div>
 
-                        {/* SERVIÇO 4 */}
                         <div className="service-card">
-                            <h3>Ações Sociais - Dia das Crianças</h3>
+                            <h3>Ações Sociais</h3>
                             <p>
-                                Realizamos eventos comemorativos na cooperativa, como o Dia das
-                                Crianças, promovendo momentos de alegria, inclusão e apoio à
-                                comunidade local.
+                                Realizamos eventos comunitários que promovem alegria, inclusão e
+                                apoio à comunidade local.
                             </p>
                         </div>
-
                     </div>
 
-                    <a href="#educacao-ambiental" className="services-button">
+                    <Link to="/educacao-ambiental" className="services-button">
                         Conheça nossos serviços
-                    </a>
-
+                    </Link>
                 </div>
             </section>
 
-            {/* ================= IMPACTO ================= */}
             <section className="impact">
                 <div className="impact-container">
-
                     <span className="section-subtitle">Nosso impacto</span>
                     <h2>Transformando vidas e o meio ambiente</h2>
 
                     <div className="impact-grid">
-
                         <div className="impact-card">
                             <h3>+50</h3>
                             <p>Toneladas recicladas por mês</p>
@@ -161,13 +152,16 @@ export default function Home() {
                             <h3>+1000</h3>
                             <p>Pessoas impactadas em ações ambientais</p>
                         </div>
-
                     </div>
 
-                    <a href="https://wa.me/5561984882881" target="_blank" className="impact-button">
+                    <a
+                        href="https://wa.me/5561982372013"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="impact-button"
+                    >
                         Faça parte dessa transformação
                     </a>
-
                 </div>
             </section>
         </>

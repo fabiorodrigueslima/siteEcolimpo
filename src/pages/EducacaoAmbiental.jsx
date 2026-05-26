@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import "../styles/style.css";
 
 import EducacaoImg from "../assets/Img/educacao-escolar.jpg";
@@ -9,7 +9,6 @@ import galeria4 from "../assets/Img/galeria4.jpg";
 
 export default function EducacaoAmbiental() {
     const [tipoServico, setTipoServico] = useState("");
-
     const [form, setForm] = useState({
         nome: "",
         telefone: "",
@@ -18,7 +17,6 @@ export default function EducacaoAmbiental() {
         mensagem: "",
     });
 
-    /* ================= ANIMAÇÃO ================= */
     useEffect(() => {
         const elementos = document.querySelectorAll(".animate-page");
 
@@ -38,16 +36,13 @@ export default function EducacaoAmbiental() {
         return () => {
             elementos.forEach((el) => observer.unobserve(el));
         };
-    }, []);
-
-    /* ================= FORM ================= */
+    }, [tipoServico]);
 
     function abrirFormulario(servico) {
         setTipoServico(servico);
 
         setTimeout(() => {
-            const formEl = document.querySelector(".form-solicitacao");
-            formEl?.scrollIntoView({ behavior: "smooth" });
+            document.querySelector(".form-solicitacao")?.scrollIntoView({ behavior: "smooth" });
         }, 100);
     }
 
@@ -72,21 +67,11 @@ Local: ${form.local}
 Mensagem: ${form.mensagem}
 `;
 
-        const whatsapp = `https://wa.me/5561982372013?text=${encodeURIComponent(
-            texto
-        )}`;
-
-        const email = `mailto:cooperativaecolimpodf@gmail.com?subject=Solicitação - ${tipoServico}&body=${encodeURIComponent(
-            texto
-        )}`;
-
-        window.open(whatsapp, "_blank");
-        window.location.href = email;
+        window.open(`https://wa.me/5561982372013?text=${encodeURIComponent(texto)}`, "_blank", "noopener,noreferrer");
     }
 
     return (
         <main className="educacao-page">
-            {/* HERO */}
             <section className="educacao-hero animate-page">
                 <div className="educacao-hero-content">
                     <span>Consciência e sustentabilidade</span>
@@ -99,7 +84,6 @@ Mensagem: ${form.mensagem}
                 </div>
             </section>
 
-            {/* INTRO */}
             <section className="educacao-intro animate-page">
                 <div className="educacao-container">
                     <div className="educacao-img">
@@ -111,9 +95,8 @@ Mensagem: ${form.mensagem}
                         <h2>Levamos conhecimento para escolas, empresas e instituições</h2>
 
                         <p>
-                            Realizamos palestras, rodas de conversa e atividades educativas
-                            sobre reciclagem, coleta seletiva, preservação ambiental e
-                            responsabilidade social.
+                            Realizamos palestras, rodas de conversa e atividades educativas sobre
+                            reciclagem, coleta seletiva, preservação ambiental e responsabilidade social.
                         </p>
 
                         <p>
@@ -124,15 +107,11 @@ Mensagem: ${form.mensagem}
                 </div>
             </section>
 
-            {/* SERVIÇOS */}
-            <section
-                className="educacao-cards animate-page"
-                id="servicos-educacao"
-            >
+            <section className="educacao-cards animate-page" id="servicos-educacao">
                 <div className="educacao-card">
                     <h3>Palestras</h3>
                     <p>Educação ambiental em empresas e escolas.</p>
-                    <button onClick={() => abrirFormulario("Palestra")}>
+                    <button type="button" onClick={() => abrirFormulario("Palestra")}>
                         Solicitar
                     </button>
                 </div>
@@ -140,7 +119,7 @@ Mensagem: ${form.mensagem}
                 <div className="educacao-card">
                     <h3>Gincanas</h3>
                     <p>Atividades práticas e educativas.</p>
-                    <button onClick={() => abrirFormulario("Gincana Sustentável")}>
+                    <button type="button" onClick={() => abrirFormulario("Gincana Sustentável")}>
                         Solicitar
                     </button>
                 </div>
@@ -148,68 +127,27 @@ Mensagem: ${form.mensagem}
                 <div className="educacao-card">
                     <h3>Conscientização</h3>
                     <p>Orientação sobre reciclagem e meio ambiente.</p>
-                    <button
-                        onClick={() => abrirFormulario("Conscientização Ambiental")}
-                    >
+                    <button type="button" onClick={() => abrirFormulario("Conscientização Ambiental")}>
                         Solicitar
                     </button>
                 </div>
             </section>
 
-            {/* FORMULÁRIO */}
             {tipoServico && (
                 <section className="form-solicitacao animate-page">
                     <div className="form-container">
-                        <button className="form-close" onClick={fecharFormulario}>
+                        <button className="form-close" type="button" onClick={fecharFormulario} aria-label="Fechar formulário">
                             ×
                         </button>
 
                         <h2>Solicitar {tipoServico}</h2>
 
                         <form onSubmit={enviarSolicitacao}>
-                            <input
-                                type="text"
-                                name="nome"
-                                placeholder="Seu nome"
-                                value={form.nome}
-                                onChange={handleChange}
-                                required
-                            />
-
-                            <input
-                                type="tel"
-                                name="telefone"
-                                placeholder="Telefone"
-                                value={form.telefone}
-                                onChange={handleChange}
-                                required
-                            />
-
-                            <input
-                                type="email"
-                                name="email"
-                                placeholder="E-mail"
-                                value={form.email}
-                                onChange={handleChange}
-                                required
-                            />
-
-                            <input
-                                type="text"
-                                name="local"
-                                placeholder="Local"
-                                value={form.local}
-                                onChange={handleChange}
-                                required
-                            />
-
-                            <textarea
-                                name="mensagem"
-                                placeholder="Mensagem"
-                                value={form.mensagem}
-                                onChange={handleChange}
-                                required
-                            ></textarea>
+                            <input type="text" name="nome" placeholder="Seu nome" value={form.nome} onChange={handleChange} required />
+                            <input type="tel" name="telefone" placeholder="Telefone" value={form.telefone} onChange={handleChange} required />
+                            <input type="email" name="email" placeholder="E-mail" value={form.email} onChange={handleChange} required />
+                            <input type="text" name="local" placeholder="Local" value={form.local} onChange={handleChange} required />
+                            <textarea name="mensagem" placeholder="Mensagem" value={form.mensagem} onChange={handleChange} required></textarea>
 
                             <button type="submit">Enviar solicitação</button>
                         </form>
@@ -217,7 +155,6 @@ Mensagem: ${form.mensagem}
                 </section>
             )}
 
-            {/* COMO FUNCIONA */}
             <section className="educacao-como-funciona animate-page">
                 <span className="section-subtitle">Etapas</span>
                 <h2>Como funciona</h2>
@@ -249,20 +186,18 @@ Mensagem: ${form.mensagem}
                 </div>
             </section>
 
-            {/* GALERIA */}
             <section className="galeria-educacao animate-page">
                 <span className="section-subtitle">Galeria</span>
                 <h2>Fotos</h2>
 
                 <div className="galeria-grid">
                     <img src={galeria1} alt="Ação ambiental" />
-                    <img src={galeria2} alt="Palestra" />
-                    <img src={galeria3} alt="Gincana" />
+                    <img src={galeria2} alt="Palestra ambiental" />
+                    <img src={galeria3} alt="Gincana sustentável" />
                     <img src={galeria4} alt="Coleta seletiva" />
                 </div>
             </section>
 
-            {/* CTA */}
             <section className="educacao-cta animate-page">
                 <div className="educacao-cta-content">
                     <h2>Leve educação ambiental para sua instituição</h2>

@@ -1,6 +1,42 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import "../styles/style.css";
 import Equipe from "../assets/Img/Cooperados.jpeg";
+
+const diretoria = [
+    ["JC", "Júlio César", "Presidente", "(61) 98182-8264"],
+    ["FR", "Fábio Rodrigues", "Secretário", "(61) 98488-2881"],
+    ["LC", "Lenir Conceição", "Tesoureira", "(61) 99202-3893"],
+];
+
+const gestao = [
+    ["PA", "Patricia Alves", "Gestora de Galpão", "(61) 99348-8719"],
+    ["LC", "Lenir Conceição", "Auxiliar da Gestão", "(61) 99202-3893"],
+];
+
+const conselhoTitulares = [
+    ["RV", "Rian Vitor", "Conselheiro Fiscal Titular", "(61) 99513-9692"],
+    ["AC", "Almerinda Correia", "Conselheira Fiscal Titular", ""],
+    ["RP", "Milagros Hernandez", "Conselheiro Fiscal Titular", "(61)99644-4832"],
+];
+
+const conselhoSuplentes = [
+    ["MI", "Rogerio da Silva", "Conselheira Fiscal Suplente", "(61) 98541-6322"],
+    ["RD", "Rafael Duarte", "Conselheiro Fiscal Suplente", "(61) 99201-7008"],
+    ["MC", "Maria Cristiane", "Conselheira Fiscal Suplente", "(61) 99214-9586"],
+];
+
+function PessoaCard({ pessoa }) {
+    const [iniciais, nome, cargo, telefone] = pessoa;
+
+    return (
+        <div className="equipe-card">
+            <div className="foto-placeholder" aria-hidden="true">{iniciais}</div>
+            <h4>{nome}</h4>
+            <p>{cargo}</p>
+            {telefone && <span>{telefone}</span>}
+        </div>
+    );
+}
 
 export default function QuemSomos() {
     useEffect(() => {
@@ -32,9 +68,8 @@ export default function QuemSomos() {
                     <h1>Quem Somos</h1>
                     <p>
                         A Cooperativa de Trabalho de Catadores Ecolimpo é um empreendimento
-                        social de economia solidária, fundada em São Sebastião-DF em julho
-                        de 2013, formada exclusivamente por catadores de materiais
-                        recicláveis.
+                        social de economia solidária, fundada em São Sebastião - DF em julho
+                        de 2013, formada exclusivamente por catadores de materiais recicláveis.
                     </p>
                 </div>
             </section>
@@ -99,25 +134,24 @@ export default function QuemSomos() {
                 <div className="info-card">
                     <h3>O que fazemos</h3>
                     <p>
-                        Realizamos coleta seletiva inclusiva, triagem de materiais
-                        recicláveis, educação ambiental, palestras, gincanas sustentáveis e
-                        ações sociais.
+                        Realizamos coleta seletiva inclusiva, triagem de materiais recicláveis,
+                        educação ambiental, palestras, gincanas sustentáveis e ações sociais.
                     </p>
                 </div>
 
                 <div className="info-card">
                     <h3>Como fazemos</h3>
                     <p>
-                        Trabalhamos com campanhas de mobilização e sensibilização da
-                        comunidade para a separação correta dos materiais recicláveis.
+                        Trabalhamos com campanhas de mobilização e sensibilização da comunidade
+                        para a separação correta dos materiais recicláveis.
                     </p>
                 </div>
 
                 <div className="info-card">
                     <h3>Melhoria que buscamos</h3>
                     <p>
-                        Buscamos fortalecer a coleta seletiva, gerar trabalho e renda,
-                        ampliar parcerias e contribuir para uma cidade mais limpa.
+                        Buscamos fortalecer a coleta seletiva, gerar trabalho e renda, ampliar
+                        parcerias e contribuir para uma cidade mais limpa.
                     </p>
                 </div>
             </section>
@@ -127,97 +161,24 @@ export default function QuemSomos() {
                 <h2>Equipe da Cooperativa</h2>
 
                 <h3 className="equipe-titulo">Diretoria</h3>
-
                 <div className="equipe-grid">
-                    <div className="equipe-card">
-                        <div className="foto-placeholder">👤</div>
-                        <h4>JÚLIO CÉSAR</h4>
-                        <p>Presidente</p>
-                        <span>(61) 981828264</span>
-                    </div>
-
-                    <div className="equipe-card">
-                        <div className="foto-placeholder">👤</div>
-                        <h4>FÁBIO RODRIGUES</h4>
-                        <p>Secretário</p>
-                        <span>(61) 984882881</span>
-                    </div>
-
-                    <div className="equipe-card">
-                        <div className="foto-placeholder">👤</div>
-                        <h4>LENIR CONCEIÇÃO</h4>
-                        <p>Tesoureira</p>
-                        <span>(61) 992023893</span>
-                    </div>
+                    {diretoria.map((pessoa) => <PessoaCard key={`${pessoa[1]}-${pessoa[2]}`} pessoa={pessoa} />)}
                 </div>
 
                 <h3 className="equipe-titulo">Gestão de Galpão</h3>
-
                 <div className="equipe-grid">
-                    <div className="equipe-card">
-                        <div className="foto-placeholder">👤</div>
-                        <h4>PATRICIA ALVES</h4>
-                        <p>Gestora de Galpão</p>
-                        <span>(61) 993488719</span>
-                    </div>
-
-                    <div className="equipe-card">
-                        <div className="foto-placeholder">👤</div>
-                        <h4>LENIR CONCEIÇÃO</h4>
-                        <p>Auxiliar da Gestão</p>
-                        <span>(61) 992023893</span>
-                    </div>
+                    {gestao.map((pessoa) => <PessoaCard key={`${pessoa[1]}-${pessoa[2]}`} pessoa={pessoa} />)}
                 </div>
 
                 <h3 className="equipe-titulo">Conselho Fiscal</h3>
                 <h4 className="subtitulo">Titulares</h4>
-
                 <div className="equipe-grid">
-                    <div className="equipe-card">
-                        <div className="foto-placeholder">👤</div>
-                        <h4>RIAN VITOR</h4>
-                        <p>Conselheiro Fiscal Titular</p>
-                        <span>(61) 995139692</span>
-                    </div>
-
-                    <div className="equipe-card">
-                        <div className="foto-placeholder">👤</div>
-                        <h4>ALMERINDA CORREIA</h4>
-                        <p>Conselheiro Fiscal Titular</p>
-                        <span>(61) 999999999</span>
-                    </div>
-
-                    <div className="equipe-card">
-                        <div className="foto-placeholder">👤</div>
-                        <h4>ROGÉRIO PESSOA</h4>
-                        <p>Conselheiro Fiscal Titular</p>
-                        <span>(61) 985416322</span>
-                    </div>
+                    {conselhoTitulares.map((pessoa) => <PessoaCard key={`${pessoa[1]}-${pessoa[2]}`} pessoa={pessoa} />)}
                 </div>
 
                 <h4 className="subtitulo">Suplentes</h4>
-
                 <div className="equipe-grid">
-                    <div className="equipe-card">
-                        <div className="foto-placeholder">👤</div>
-                        <h4>MILAGORS</h4>
-                        <p>Conselheiro Fiscal Suplente</p>
-                        <span>(61) 996444832</span>
-                    </div>
-
-                    <div className="equipe-card">
-                        <div className="foto-placeholder">👤</div>
-                        <h4>RAFAEL DUARTE</h4>
-                        <p>Conselheiro Fiscal Suplente</p>
-                        <span>(61) 992017008</span>
-                    </div>
-
-                    <div className="equipe-card">
-                        <div className="foto-placeholder">👤</div>
-                        <h4>MARIA CRISTIANE</h4>
-                        <p>Conselheiro Fiscal Suplente</p>
-                        <span>(61) 992149586</span>
-                    </div>
+                    {conselhoSuplentes.map((pessoa) => <PessoaCard key={`${pessoa[1]}-${pessoa[2]}`} pessoa={pessoa} />)}
                 </div>
             </section>
 
@@ -233,7 +194,6 @@ export default function QuemSomos() {
                         </p>
 
                         <p>Contatos: (61) 98237-2013 / (61) 4103-1515</p>
-
                         <p>E-mail: cooperativaecolimpodf@gmail.com</p>
                     </div>
 
@@ -254,7 +214,7 @@ export default function QuemSomos() {
                             rel="noopener noreferrer"
                             className="btn-mapa"
                         >
-                            📍 Ver no Google Maps
+                            Ver no Google Maps
                         </a>
                     </div>
                 </div>

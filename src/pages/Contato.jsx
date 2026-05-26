@@ -1,11 +1,9 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import "../styles/style.css";
 import { FaWhatsapp, FaInstagram, FaFacebookF, FaMapMarkerAlt } from "react-icons/fa";
 import { MdEmail, MdPhone } from "react-icons/md";
 
 export default function Contato() {
-
-    /* ANIMAÇÃO */
     useEffect(() => {
         const elementos = document.querySelectorAll(".animate-page");
 
@@ -29,19 +27,14 @@ export default function Contato() {
 
     return (
         <main className="contato-page">
-
-            {/* HERO */}
             <section className="contato-hero animate-page">
                 <span>Fale conosco</span>
                 <h1>Contato</h1>
                 <p>Entre em contato com a Cooperativa Ecolimpo.</p>
             </section>
 
-            {/* CONTEÚDO */}
             <section className="contato-section animate-page">
                 <div className="contato-container">
-
-                    {/* ESQUERDA */}
                     <div className="contato-info">
                         <h2>Cooperativa Ecolimpo</h2>
 
@@ -70,23 +63,21 @@ export default function Contato() {
                             Falar no WhatsApp
                         </a>
 
-                        {/* REDES */}
                         <div className="contato-redes">
                             <h3>Nossas redes</h3>
 
                             <div className="contato-icons">
-                                <a href="#" aria-label="Instagram">
+                                <a href="https://www.instagram.com/" target="_blank" rel="noreferrer" aria-label="Instagram da Ecolimpo">
                                     <FaInstagram />
                                 </a>
 
-                                <a href="#" aria-label="Facebook">
+                                <a href="https://www.facebook.com/cooperativaecolimpo/" target="_blank" rel="noreferrer" aria-label="Facebook da Ecolimpo">
                                     <FaFacebookF />
                                 </a>
                             </div>
                         </div>
                     </div>
 
-                    {/* DIREITA */}
                     <div className="contato-mapa">
                         <iframe
                             src="https://www.google.com/maps?q=-15.9096691,-47.7772288&z=17&output=embed"
@@ -103,13 +94,11 @@ export default function Contato() {
                             rel="noopener noreferrer"
                             className="btn-mapa"
                         >
-                            📍 Ver no Google Maps
+                            Ver no Google Maps
                         </a>
                     </div>
-
                 </div>
             </section>
-
         </main>
     );
 }
