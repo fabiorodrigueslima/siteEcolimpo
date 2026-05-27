@@ -144,7 +144,7 @@ export default function Home() {
                         </div>
 
                         <div className="impact-card">
-                            <h3>+20</h3>
+                            <h3>+2</h3>
                             <p>Parcerias com condomínios</p>
                         </div>
 
