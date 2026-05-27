@@ -22,6 +22,7 @@ export default function Footer() {
                     <Link to="/coleta-seletiva/slu">Coleta seletiva</Link>
                     <Link to="/condominio">Condomínios</Link>
                     <Link to="/educacao-ambiental">Educação ambiental</Link>
+                    <Link to="/socio-cooperado">Seja nosso sócio cooperado</Link>
                 </div>
 
                 <div className="footer-contact">
@@ -47,21 +48,11 @@ export default function Footer() {
                     <h3>Redes sociais</h3>
 
                     <div className="social-icons">
-                        <a
-                            href="https://www.instagram.com/"
-                            target="_blank"
-                            rel="noreferrer"
-                            aria-label="Instagram da Ecolimpo"
-                        >
+                        <a href="https://www.instagram.com/" target="_blank" rel="noreferrer" aria-label="Instagram da Ecolimpo">
                             <FaInstagram />
                         </a>
 
-                        <a
-                            href="https://www.facebook.com/cooperativaecolimpo/"
-                            target="_blank"
-                            rel="noreferrer"
-                            aria-label="Facebook da Ecolimpo"
-                        >
+                        <a href="https://www.facebook.com/cooperativaecolimpo/" target="_blank" rel="noreferrer" aria-label="Facebook da Ecolimpo">
                             <FaFacebookF />
                         </a>
                     </div>

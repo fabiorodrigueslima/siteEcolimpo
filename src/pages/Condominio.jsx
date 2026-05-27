@@ -1,4 +1,4 @@
-import { FaBuilding, FaClipboardCheck, FaExternalLinkAlt, FaRecycle } from "react-icons/fa";
+import { FaBuilding, FaClipboardCheck, FaExternalLinkAlt, FaRecycle, FaWhatsapp } from "react-icons/fa";
 import "../styles/style.css";
 
 import LogoMirante from "../assets/Img/condominios/mirante.png";
@@ -97,7 +97,71 @@ export default function Condominio() {
                 </div>
             </section>
 
-            <section className="condominio-orcamento">
+            <section className="condominio-cta-final">
+                <div className="condominio-cta-bg"></div>
+                <div className="condominio-cta-overlay"></div>
+                <div className="condominio-light"></div>
+
+                <div className="condominio-cta-container">
+                    <div className="condominio-cta-content">
+                        <span className="condominio-cta-tag">Solução completa para síndicos e administradoras</span>
+
+                        <h2>Implante uma coleta seletiva organizada no seu condomínio</h2>
+
+                        <p>
+                            A Ecolimpo ajuda o condomínio a sair da intenção para a prática:
+                            avaliamos a rotina, planejamos a coleta, orientamos moradores e
+                            encaminhamos os recicláveis para destinação correta.
+                        </p>
+
+                        <div className="condominio-cta-numbers">
+                            <div>
+                                <strong>3</strong>
+                                <span>Condomínios parceiros destacados</span>
+                            </div>
+
+                            <div>
+                                <strong>Tororó</strong>
+                                <span>Atendimento regional planejado</span>
+                            </div>
+
+                            <div>
+                                <strong>SLU</strong>
+                                <span>Experiência com coleta seletiva</span>
+                            </div>
+                        </div>
+
+                        <div className="condominio-cta-infos">
+                            <div className="cta-info-card">
+                                <strong>Diagnóstico da rotina</strong>
+                                <span>Avaliamos espaço, volume e melhor frequência de coleta.</span>
+                            </div>
+
+                            <div className="cta-info-card">
+                                <strong>Comunicação com moradores</strong>
+                                <span>Orientação simples para melhorar a separação dos recicláveis.</span>
+                            </div>
+
+                            <div className="cta-info-card">
+                                <strong>Proposta objetiva</strong>
+                                <span>O formulário reúne os dados necessários para retornarmos com clareza.</span>
+                            </div>
+                        </div>
+
+                        <div className="condominio-cta-buttons">
+                            <a href="#proposta-condominio" className="cta-whatsapp">
+                                Solicitar proposta
+                            </a>
+
+                            <a href={formularioProposta} target="_blank" rel="noreferrer" className="cta-formulario">
+                                Abrir formulário
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section className="condominio-orcamento" id="proposta-condominio">
                 <div className="condominio-orcamento-text">
                     <span className="section-subtitle">Solicite uma proposta</span>
                     <h2>Orçamento para coleta seletiva</h2>
@@ -106,129 +170,22 @@ export default function Condominio() {
                         coleta e retornarmos com uma solução adequada ao condomínio.
                     </p>
 
-                    <a
-                        href={formularioProposta}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="condominio-form-link"
-                    >
+                    <a href={formularioProposta} target="_blank" rel="noreferrer" className="condominio-form-link">
                         Abrir formulário em nova aba
                         <FaExternalLinkAlt />
+                    </a>
+
+                    <a href="https://wa.me/5561982372013" target="_blank" rel="noreferrer" className="condominio-whatsapp-link">
+                        <FaWhatsapp />
+                        Tirar dúvidas pelo WhatsApp
                     </a>
                 </div>
 
                 <div className="condominio-form-frame">
-                    <iframe
-                        src={formularioEmbed}
-                        title="Formulário de proposta para coleta seletiva"
-                        loading="lazy"
-                    >
+                    <iframe src={formularioEmbed} title="Formulário de proposta para coleta seletiva" loading="lazy">
                         Carregando formulário de proposta...
                     </iframe>
                 </div>
-            </section>
-
-            <section className="condominio-cta-final">
-
-                <div className="condominio-cta-bg"></div>
-
-                <div className="condominio-cta-overlay"></div>
-
-                <div className="condominio-light"></div>
-
-                <div className="condominio-cta-container">
-
-                    <div className="condominio-cta-content">
-
-                        <span className="condominio-cta-tag">
-                            Soluções sustentáveis para condomínios
-                        </span>
-
-                        <h2>
-                            Transforme a coleta seletiva do seu condomínio
-                            em uma solução organizada, sustentável e eficiente
-                        </h2>
-
-                        <p>
-                            A Cooperativa Ecolimpo atua em parceria com síndicos,
-                            administradoras e moradores oferecendo coleta seletiva,
-                            orientação ambiental e destinação correta dos recicláveis
-                            com atendimento humanizado e planejamento personalizado.
-                        </p>
-
-                        <div className="condominio-cta-numbers">
-
-                            <div>
-                                <strong>+3</strong>
-                                <span>Condomínios parceiros</span>
-                            </div>
-
-                            <div>
-                                <strong>100%</strong>
-                                <span>Compromisso ambiental</span>
-                            </div>
-
-                            <div>
-                                <strong>Coleta</strong>
-                                <span>Planejada e organizada</span>
-                            </div>
-
-                        </div>
-
-                        <div className="condominio-cta-infos">
-
-                            <div className="cta-info-card">
-                                <strong>Planejamento da coleta</strong>
-
-                                <span>
-                                    Organização conforme a rotina e necessidade do condomínio
-                                </span>
-                            </div>
-
-                            <div className="cta-info-card">
-                                <strong>Atendimento para síndicos</strong>
-
-                                <span>
-                                    Suporte direto para administração e moradores
-                                </span>
-                            </div>
-
-                            <div className="cta-info-card">
-                                <strong>Responsabilidade ambiental</strong>
-
-                                <span>
-                                    Destinação correta dos recicláveis com impacto positivo
-                                </span>
-                            </div>
-
-                        </div>
-
-                        <div className="condominio-cta-buttons">
-
-                            <a
-                                href="https://wa.me/5561999999999"
-                                target="_blank"
-                                rel="noreferrer"
-                                className="cta-whatsapp"
-                            >
-                                Solicitar atendimento
-                            </a>
-
-                            <a
-                                href={formularioProposta}
-                                target="_blank"
-                                rel="noreferrer"
-                                className="cta-formulario"
-                            >
-                                Preencher formulário
-                            </a>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
             </section>
         </main>
     );

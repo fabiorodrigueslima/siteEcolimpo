@@ -9,6 +9,7 @@ import Footer from "./components/Footer";
 import WhatsAppButton from "./components/WhatsAppButton";
 import SLU from "./pages/SLU";
 import Condominio from "./pages/Condominio";
+import SocioCooperado from "./pages/SocioCooperado";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/contato" element={<Contato />} />
         <Route path="/coleta-seletiva/slu" element={<SLU />} />
         <Route path="/condominio" element={<Condominio />} />
+        <Route path="/socio-cooperado" element={<SocioCooperado />} />
       </Routes>
 
       <Footer />

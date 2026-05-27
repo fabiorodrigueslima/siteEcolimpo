@@ -7,10 +7,10 @@ export default function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
     const [dropdownOpen, setDropdownOpen] = useState(false);
 
-    const fecharMenu = () => {
+    function fecharMenu() {
         setMenuOpen(false);
         setDropdownOpen(false);
-    };
+    }
 
     return (
         <header className="navbar">
@@ -24,14 +24,12 @@ export default function Navbar() {
                     type="button"
                     onClick={() => setMenuOpen(!menuOpen)}
                     aria-label="Abrir menu"
+                    aria-expanded={menuOpen}
                 >
                     ☰
                 </button>
 
-                <nav
-                    className={`navbar-menu ${menuOpen ? "active" : ""}`}
-                    aria-label="Navegação principal"
-                >
+                <nav className={`navbar-menu ${menuOpen ? "active" : ""}`} aria-label="Navegação principal">
                     <Link to="/" onClick={fecharMenu}>Início</Link>
                     <Link to="/quem-somos" onClick={fecharMenu}>Quem somos</Link>
 
@@ -40,6 +38,7 @@ export default function Navbar() {
                             className="dropdown-btn"
                             type="button"
                             aria-haspopup="true"
+                            aria-expanded={dropdownOpen}
                             onClick={() => setDropdownOpen(!dropdownOpen)}
                         >
                             Coleta seletiva ▾
@@ -51,13 +50,9 @@ export default function Navbar() {
                         </div>
                     </div>
 
-                    <Link to="/educacao-ambiental" onClick={fecharMenu}>
-                        Educação ambiental
-                    </Link>
-
-                    <Link to="/contato" onClick={fecharMenu}>
-                        Contato
-                    </Link>
+                    <Link to="/educacao-ambiental" onClick={fecharMenu}>Educação ambiental</Link>
+                    <Link to="/socio-cooperado" onClick={fecharMenu}>Seja nosso sócio cooperado</Link>
+                    <Link to="/contato" onClick={fecharMenu}>Contato</Link>
                 </nav>
             </div>
         </header>
