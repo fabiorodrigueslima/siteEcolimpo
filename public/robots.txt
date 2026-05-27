@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://cooperativaecolimpo.com.br/sitemap.xml
+Sitemap: https://site-ecolimpo.vercel.app/sitemap.xml
