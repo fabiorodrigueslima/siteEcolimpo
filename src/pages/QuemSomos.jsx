@@ -42,6 +42,11 @@ export default function QuemSomos() {
     useEffect(() => {
         const elementos = document.querySelectorAll(".animate-page");
 
+        if (!("IntersectionObserver" in window)) {
+            elementos.forEach((elemento) => elemento.classList.add("show"));
+            return;
+        }
+
         const observer = new IntersectionObserver(
             (entradas) => {
                 entradas.forEach((entrada) => {
@@ -55,9 +60,7 @@ export default function QuemSomos() {
 
         elementos.forEach((elemento) => observer.observe(elemento));
 
-        return () => {
-            elementos.forEach((elemento) => observer.unobserve(elemento));
-        };
+        return () => observer.disconnect();
     }, []);
 
     return (
@@ -156,7 +159,7 @@ export default function QuemSomos() {
                 </div>
             </section>
 
-            <section className="equipe-diretoria animate-page">
+            <section className="equipe-diretoria animate-page show">
                 <span>Nossa organização</span>
                 <h2>Equipe da Cooperativa</h2>
 
