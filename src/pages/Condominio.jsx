@@ -1,7 +1,7 @@
 import { FaBuilding, FaClipboardCheck, FaExternalLinkAlt, FaRecycle, FaWhatsapp } from "react-icons/fa";
 import "../styles/style.css";
 
-import LogoMirante from "../assets/Img/condominios/mirante.png";
+import LogoMonaco from "../assets/Img/condominios/Logo-Monaco.jpg";
 import LogoSanFrancisco from "../assets/Img/condominios/san-francisco-ii.png";
 import LogoParqueMirante from "../assets/Img/condominios/parque-mirante.png";
 
@@ -12,10 +12,10 @@ const formularioEmbed = `${formularioProposta}?embedded=true`;
 
 const condominiosParceiros = [
     {
-        nome: "Mirante",
+        nome: "Condomínio Monâco",
         regiao: "Região do Tororó - DF",
         descricao: "Parceria para coleta seletiva, orientação ambiental e destinação correta dos recicláveis.",
-        logo: LogoMirante,
+        logo: LogoMonaco,
     },
     {
         nome: "San Francisco II",
@@ -24,7 +24,7 @@ const condominiosParceiros = [
         logo: LogoSanFrancisco,
     },
     {
-        nome: "Parque Mirante",
+        nome: "Parque do Mirante",
         regiao: "Região do Tororó - DF",
         descricao: "Coleta seletiva organizada em parceria com a administração e moradores do condomínio.",
         logo: LogoParqueMirante,
