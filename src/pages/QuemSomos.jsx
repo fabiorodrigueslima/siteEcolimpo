@@ -196,7 +196,7 @@ export default function QuemSomos() {
                             CEP: 71.698-001.
                         </p>
 
-                        <p>Contatos: (61) 98237-2013 / (61) 4103-1515</p>
+                        <p>Contatos: (61) 98237-2013</p>
                         <p>E-mail: cooperativaecolimpodf@gmail.com</p>
                     </div>
 
