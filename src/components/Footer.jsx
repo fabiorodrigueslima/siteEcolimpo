@@ -1,67 +1,35 @@
 import { Link } from "react-router-dom";
-import { FaWhatsapp, FaInstagram, FaFacebookF, FaMapMarkerAlt } from "react-icons/fa";
-import { MdEmail } from "react-icons/md";
-import "../styles/style.css";
+import { FaFacebookF, FaMapMarkerAlt, FaWhatsapp } from "react-icons/fa";
+import { MdEmail, MdPhone } from "react-icons/md";
+import { site, whatsappUrl } from "../data/site";
 
 export default function Footer() {
-    return (
-        <footer className="footer" id="contato">
-            <div className="footer-container">
-                <div className="footer-brand">
-                    <h2>Cooperativa Ecolimpo</h2>
-                    <p>
-                        Trabalhando pela coleta seletiva, educação ambiental e por um futuro
-                        mais limpo e sustentável.
-                    </p>
-                </div>
-
-                <div className="footer-links">
-                    <h3>Navegação</h3>
-                    <Link to="/">Início</Link>
-                    <Link to="/quem-somos">Quem somos</Link>
-                    <Link to="/coleta-seletiva/slu">Coleta seletiva</Link>
-                    <Link to="/condominio">Condomínios</Link>
-                    <Link to="/educacao-ambiental">Educação ambiental</Link>
-                    <Link to="/socio-cooperado">Seja nosso sócio cooperado</Link>
-                </div>
-
-                <div className="footer-contact">
-                    <h3>Contato</h3>
-
-                    <p>
-                        <FaMapMarkerAlt />
-                        São Sebastião - DF
-                    </p>
-
-                    <a href="mailto:cooperativaecolimpodf@gmail.com">
-                        <MdEmail />
-                        cooperativaecolimpodf@gmail.com
-                    </a>
-
-                    <a href="https://wa.me/5561982372013" target="_blank" rel="noreferrer">
-                        <FaWhatsapp />
-                        WhatsApp
-                    </a>
-                </div>
-
-                <div className="footer-social">
-                    <h3>Redes sociais</h3>
-
-                    <div className="social-icons">
-                        <a href="https://www.instagram.com/" target="_blank" rel="noreferrer" aria-label="Instagram da Ecolimpo">
-                            <FaInstagram />
-                        </a>
-
-                        <a href="https://www.facebook.com/cooperativaecolimpo/" target="_blank" rel="noreferrer" aria-label="Facebook da Ecolimpo">
-                            <FaFacebookF />
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div className="footer-bottom">
-                <p>© 2026 Cooperativa Ecolimpo. Todos os direitos reservados.</p>
-            </div>
-        </footer>
-    );
+  return (
+    <footer className="footer">
+      <div className="footer-container">
+        <div className="footer-brand">
+          <img src="/Nova-logo.png" alt="Cooperativa Ecolimpo" width="164" height="76" loading="lazy" />
+          <p>Coleta seletiva, educação ambiental e valorização dos catadores em São Sebastião, Distrito Federal.</p>
+        </div>
+        <div className="footer-links">
+          <h2>Navegação</h2>
+          <Link to="/quem-somos">Quem somos</Link>
+          <Link to="/coleta-seletiva/slu">Coleta seletiva</Link>
+          <Link to="/condominio">Condomínios</Link>
+          <Link to="/educacao-ambiental">Educação ambiental</Link>
+          <Link to="/contato">Contato</Link>
+          <Link to="/privacidade">Política de privacidade</Link>
+        </div>
+        <div className="footer-contact">
+          <h2>Contato</h2>
+          <p><FaMapMarkerAlt aria-hidden="true" />{site.address}</p>
+          <a href={site.phoneHref}><MdPhone aria-hidden="true" />{site.phoneDisplay}</a>
+          <a href={`mailto:${site.email}`}><MdEmail aria-hidden="true" />{site.email}</a>
+          <a href={whatsappUrl("Olá! Gostaria de falar com a Cooperativa Ecolimpo.")} target="_blank" rel="noopener noreferrer"><FaWhatsapp aria-hidden="true" />WhatsApp</a>
+          <a href={site.facebook} target="_blank" rel="noopener noreferrer"><FaFacebookF aria-hidden="true" />Facebook</a>
+        </div>
+      </div>
+      <div className="footer-bottom">© {new Date().getFullYear()} Cooperativa Ecolimpo. Todos os direitos reservados.</div>
+    </footer>
+  );
 }

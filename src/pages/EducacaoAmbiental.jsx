@@ -6,6 +6,7 @@ import galeria1 from "../assets/Img/galeria1.jpg";
 import galeria2 from "../assets/Img/galeria2.jpg";
 import galeria3 from "../assets/Img/galeria3.jpg";
 import galeria4 from "../assets/Img/galeria4.jpg";
+import Seo from "../components/Seo";
 
 export default function EducacaoAmbiental() {
     const [tipoServico, setTipoServico] = useState("");
@@ -71,7 +72,8 @@ Mensagem: ${form.mensagem}
     }
 
     return (
-        <main className="educacao-page">
+        <main className="educacao-page" id="conteudo">
+            <Seo title="Educação ambiental no DF | Cooperativa Ecolimpo" description="Solicite palestras, gincanas e ações de educação ambiental da Cooperativa Ecolimpo para escolas, empresas e instituições." />
             <section className="educacao-hero animate-page">
                 <div className="educacao-hero-content">
                     <span>Consciência e sustentabilidade</span>
@@ -143,11 +145,17 @@ Mensagem: ${form.mensagem}
                         <h2>Solicitar {tipoServico}</h2>
 
                         <form onSubmit={enviarSolicitacao}>
-                            <input type="text" name="nome" placeholder="Seu nome" value={form.nome} onChange={handleChange} required />
-                            <input type="tel" name="telefone" placeholder="Telefone" value={form.telefone} onChange={handleChange} required />
-                            <input type="email" name="email" placeholder="E-mail" value={form.email} onChange={handleChange} required />
-                            <input type="text" name="local" placeholder="Local" value={form.local} onChange={handleChange} required />
-                            <textarea name="mensagem" placeholder="Mensagem" value={form.mensagem} onChange={handleChange} required></textarea>
+                            <label htmlFor="educacao-nome">Nome</label>
+                            <input id="educacao-nome" type="text" name="nome" autoComplete="name" value={form.nome} onChange={handleChange} required minLength="2" />
+                            <label htmlFor="educacao-telefone">Telefone</label>
+                            <input id="educacao-telefone" type="tel" name="telefone" autoComplete="tel" value={form.telefone} onChange={handleChange} required minLength="8" />
+                            <label htmlFor="educacao-email">E-mail</label>
+                            <input id="educacao-email" type="email" name="email" autoComplete="email" value={form.email} onChange={handleChange} required />
+                            <label htmlFor="educacao-local">Escola, empresa ou instituição</label>
+                            <input id="educacao-local" type="text" name="local" value={form.local} onChange={handleChange} required minLength="2" />
+                            <label htmlFor="educacao-mensagem">Mensagem</label>
+                            <textarea id="educacao-mensagem" name="mensagem" value={form.mensagem} onChange={handleChange} required minLength="10"></textarea>
+                            <p className="form-privacy">Ao continuar, os dados serão incluídos em uma mensagem que você poderá revisar antes de enviar pelo WhatsApp. Consulte a <a href="/privacidade">política de privacidade</a>.</p>
 
                             <button type="submit">Enviar solicitação</button>
                         </form>

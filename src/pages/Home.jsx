@@ -1,169 +1,122 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import "../styles/style.css";
+import { FaBuilding, FaChalkboardTeacher, FaHandsHelping, FaRecycle, FaTruck, FaUsers } from "react-icons/fa";
 import Cooperados from "../assets/Img/Cooperados.jpeg";
+import Seo from "../components/Seo";
+import { areasServed, impactIndicators, whatsappUrl } from "../data/site";
+
+const services = [
+  { icon: FaTruck, title: "Coleta seletiva", text: "Coleta e encaminhamento correto dos materiais recicláveis." },
+  { icon: FaRecycle, title: "Triagem e destinação", text: "Separação dos recicláveis e destinação ambientalmente correta." },
+  { icon: FaBuilding, title: "Condomínios", text: "Planejamento da coleta com síndicos, administradoras e moradores." },
+  { icon: FaChalkboardTeacher, title: "Educação ambiental", text: "Palestras, ações educativas e gincanas sustentáveis." },
+  { icon: FaHandsHelping, title: "Ações sociais", text: "Iniciativas que fortalecem a comunidade e a inclusão." },
+  { icon: FaUsers, title: "Valorização dos catadores", text: "Geração de trabalho, renda e organização coletiva." },
+];
+
+const process = ["Contato", "Avaliação da necessidade", "Orientação", "Coleta", "Triagem", "Destinação correta"];
 
 export default function Home() {
-    useEffect(() => {
-        const image = document.querySelector(".home-image");
-        const history = document.querySelector(".home-content");
-        const objectives = document.querySelector(".home-objectives");
-        const services = document.querySelector(".services");
+  return (
+    <main id="conteudo">
+      <Seo title="Cooperativa Ecolimpo | Coleta seletiva em São Sebastião - DF" description="Cooperativa de catadores com coleta seletiva, triagem, atendimento a condomínios e educação ambiental em São Sebastião, Distrito Federal." />
 
-        const timers = [
-            setTimeout(() => image?.classList.add("show"), 200),
-            setTimeout(() => history?.classList.add("show"), 700),
-            setTimeout(() => objectives?.classList.add("show"), 1100),
-            setTimeout(() => services?.classList.add("show"), 1400),
-        ];
+      <section className="hero">
+        <div className="hero-content">
+          <p className="eyebrow">Cooperativa de catadores no Distrito Federal</p>
+          <h1>Reciclagem que cuida do meio ambiente e valoriza pessoas</h1>
+          <p>A Ecolimpo realiza coleta seletiva, triagem e destinação correta de recicláveis, fortalecendo o trabalho dos catadores e a comunidade.</p>
+          <div className="button-row">
+            <Link className="button button-primary" to="/contato">Solicitar coleta</Link>
+            <a className="button button-whatsapp" href={whatsappUrl("Olá! Gostaria de saber mais sobre a coleta seletiva da Ecolimpo.")} target="_blank" rel="noopener noreferrer">Falar pelo WhatsApp</a>
+          </div>
+        </div>
+        <div className="hero-image">
+          <img src={Cooperados} alt="Cooperados da Ecolimpo reunidos" width="722" height="542" fetchPriority="high" />
+        </div>
+      </section>
 
-        return () => timers.forEach(clearTimeout);
-    }, []);
+      <section className="section split-section">
+        <div>
+          <p className="eyebrow">Nossa história</p>
+          <h2>Cooperação que transforma resíduos em oportunidade</h2>
+        </div>
+        <div>
+          <p>Fundada em São Sebastião - DF em julho de 2013, a Cooperativa de Trabalho de Catadores Ecolimpo é formada exclusivamente por catadores de materiais recicláveis.</p>
+          <p>A cooperativa promove separação correta, geração de trabalho e renda e ações de educação ambiental, atuando nas regiões confirmadas nas rotas de coleta e parcerias.</p>
+          <Link className="text-link" to="/quem-somos">Conheça a cooperativa →</Link>
+        </div>
+      </section>
 
-    return (
-        <>
-            <section className="home" id="inicio">
-                <div className="home-container">
-                    <div className="home-image">
-                        <img src={Cooperados} alt="Cooperados da Ecolimpo" />
-                    </div>
+      <section className="section section-tinted">
+        <div className="section-heading">
+          <p className="eyebrow">O que fazemos</p>
+          <h2>Soluções para a comunidade, condomínios e instituições</h2>
+        </div>
+        <div className="card-grid">
+          {services.map(({ icon: Icon, title, text }) => (
+            <article className="info-card" key={title}>
+              <Icon aria-hidden="true" />
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </article>
+          ))}
+        </div>
+      </section>
 
-                    <div className="home-content">
-                        <span className="home-subtitle">Nossa história</span>
-                        <h1>Cooperativa Ecolimpo</h1>
+      <section className="section">
+        <div className="section-heading">
+          <p className="eyebrow">Como funciona</p>
+          <h2>Do primeiro contato à destinação correta</h2>
+        </div>
+        <ol className="process-grid">
+          {process.map((step, index) => <li key={step}><span>{index + 1}</span>{step}</li>)}
+        </ol>
+      </section>
 
-                        <p>
-                            A Cooperativa de Trabalho de Catadores Ecolimpo nasceu com o
-                            compromisso de transformar a coleta seletiva em uma ação de cuidado
-                            com o meio ambiente e de valorização dos trabalhadores da reciclagem.
-                        </p>
+      <section className="section impact-section">
+        <div className="section-heading">
+          <p className="eyebrow">Nosso impacto</p>
+          <h2>Resultados cadastrados pela cooperativa</h2>
+          <p className="data-note">Última atualização: <strong>[INFORMAÇÃO A CONFIRMAR]</strong></p>
+        </div>
+        <div className="impact-grid">
+          {impactIndicators.map((item) => <article key={item.label}><strong>{item.value}</strong><span>{item.label}</span></article>)}
+        </div>
+      </section>
 
-                        <p>
-                            Atuamos em São Sebastião - DF promovendo a separação correta dos
-                            materiais recicláveis, contribuindo para uma cidade mais limpa,
-                            consciente e sustentável.
-                        </p>
+      <section className="section materials-section">
+        <div>
+          <p className="eyebrow">Separação responsável</p>
+          <h2>Materiais recicláveis</h2>
+          <p>As regras detalhadas de materiais aceitos e itens que não devem ser misturados precisam ser validadas pela cooperativa.</p>
+        </div>
+        <div className="confirm-card">
+          <h3>Orientação oficial</h3>
+          <p><strong>[INFORMAÇÃO A CONFIRMAR]</strong></p>
+          <p>Enquanto isso, consulte a Ecolimpo antes de separar materiais sobre os quais tenha dúvida.</p>
+          <a className="text-link" href={whatsappUrl("Olá! Gostaria de confirmar quais materiais a Ecolimpo recebe.")} target="_blank" rel="noopener noreferrer">Perguntar pelo WhatsApp →</a>
+        </div>
+      </section>
 
-                        <p>
-                            Fundada em São Sebastião - DF em julho de 2013, a cooperativa é
-                            formada exclusivamente por catadores de materiais recicláveis.
-                        </p>
-                    </div>
-                </div>
+      <section className="section section-tinted">
+        <div className="section-heading">
+          <p className="eyebrow">Onde atuamos</p>
+          <h2>Áreas confirmadas no projeto</h2>
+        </div>
+        <ul className="area-list">{areasServed.map((area) => <li key={area}>{area}</li>)}</ul>
+        <Link className="text-link" to="/coleta-seletiva/slu">Ver dias e turnos da coleta SLU →</Link>
+      </section>
 
-                <div className="home-objectives">
-                    <span className="home-subtitle">
-                        Compromisso com a sustentabilidade
-                    </span>
-
-                    <h2>Nossos Objetivos</h2>
-
-                    <ul>
-                        <li>Proporcionar soluções no campo da sustentabilidade.</li>
-                        <li>Organizar os catadores da comunidade.</li>
-                        <li>
-                            Promover ações em parceria com o poder público e instituições
-                            privadas.
-                        </li>
-                        <li>
-                            Reaproveitar e reutilizar os resíduos sólidos do nosso cotidiano,
-                            dando destinação ambientalmente correta.
-                        </li>
-                        <li>
-                            Tornar-se socialmente importante na geração de trabalho, emprego e
-                            renda na região.
-                        </li>
-                        <li>
-                            Promover ações no campo da educação, agregando três valores:
-                            <strong> social</strong>, <strong> ambiental</strong> e
-                            <strong> econômico</strong>.
-                        </li>
-                    </ul>
-                </div>
-            </section>
-
-            <section className="services" id="servicos">
-                <div className="services-container">
-                    <span className="section-subtitle">O que fazemos</span>
-                    <h2>Nossos Serviços</h2>
-
-                    <div className="services-grid">
-                        <div className="service-card">
-                            <h3>Coleta Seletiva</h3>
-                            <p>
-                                Realizamos a coleta e destinação correta de materiais recicláveis,
-                                contribuindo para a preservação do meio ambiente.
-                            </p>
-                        </div>
-
-                        <div className="service-card">
-                            <h3>Educação Ambiental</h3>
-                            <p>
-                                Promovemos palestras e ações educativas em empresas, escolas e
-                                instituições, incentivando a consciência ambiental de forma prática.
-                            </p>
-                        </div>
-
-                        <div className="service-card">
-                            <h3>Gincanas Sustentáveis</h3>
-                            <p>
-                                Realizamos gincanas educativas em escolas, incentivando alunos a
-                                praticarem a coleta seletiva de forma divertida.
-                            </p>
-                        </div>
-
-                        <div className="service-card">
-                            <h3>Ações Sociais</h3>
-                            <p>
-                                Realizamos eventos comunitários que promovem alegria, inclusão e
-                                apoio à comunidade local.
-                            </p>
-                        </div>
-                    </div>
-
-                    <Link to="/educacao-ambiental" className="services-button">
-                        Conheça nossos serviços
-                    </Link>
-                </div>
-            </section>
-
-            <section className="impact">
-                <div className="impact-container">
-                    <span className="section-subtitle">Nosso impacto</span>
-                    <h2>Transformando vidas e o meio ambiente</h2>
-
-                    <div className="impact-grid">
-                        <div className="impact-card">
-                            <h3>+50</h3>
-                            <p>Toneladas recicladas por mês</p>
-                        </div>
-
-                        <div className="impact-card">
-                            <h3>+30</h3>
-                            <p>Famílias beneficiadas</p>
-                        </div>
-
-                        <div className="impact-card">
-                            <h3>+2</h3>
-                            <p>Parcerias com condomínios</p>
-                        </div>
-
-                        <div className="impact-card">
-                            <h3>+1000</h3>
-                            <p>Pessoas impactadas em ações ambientais</p>
-                        </div>
-                    </div>
-
-                    <a
-                        href="https://wa.me/5561982372013"
-                        target="_blank"
-                        rel="noreferrer"
-                        className="impact-button"
-                    >
-                        Faça parte dessa transformação
-                    </a>
-                </div>
-            </section>
-        </>
-    );
+      <section className="final-cta">
+        <div>
+          <p className="eyebrow">Vamos reciclar melhor?</p>
+          <h2>Condomínios, empresas, escolas e moradores podem fazer parte dessa transformação</h2>
+        </div>
+        <div className="button-row">
+          <a className="button button-whatsapp" href={whatsappUrl("Olá! Gostaria de conversar com a Ecolimpo.")} target="_blank" rel="noopener noreferrer">Falar pelo WhatsApp</a>
+          <Link className="button button-light" to="/contato">Outros canais</Link>
+        </div>
+      </section>
+    </main>
+  );
 }

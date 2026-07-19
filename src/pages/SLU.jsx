@@ -1,9 +1,11 @@
 import "../styles/style.css";
 import { FaTruck, FaRecycle, FaMapMarkerAlt, FaLeaf } from "react-icons/fa";
+import Seo from "../components/Seo";
 
 export default function SLU() {
     return (
-        <main className="slu-page">
+        <main className="slu-page" id="conteudo">
+            <Seo title="Coleta seletiva e atendimento SLU | Ecolimpo" description="Confira regiões, dias e turnos da coleta seletiva realizada pela Ecolimpo em parceria com o SLU no Distrito Federal." />
             <section className="slu-hero">
                 <div className="slu-hero-content">
                     <span>Coleta Seletiva</span>

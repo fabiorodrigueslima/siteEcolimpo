@@ -7,12 +7,13 @@ import {
     FaWhatsapp,
 } from "react-icons/fa";
 import "../styles/style.css";
+import Seo from "../components/Seo";
 
 const etapas = [
     "Conversar com a cooperativa e conhecer a rotina de trabalho.",
-    "Apresentar documentos e preencher o cadastro de interesse.",
-    "Participar da orientação sobre direitos, deveres, produção e organização interna.",
-    "Aguardar avaliação, disponibilidade de vaga e aprovação conforme estatuto e regimento.",
+    "Informar que deseja participar e esclarecer dúvidas iniciais.",
+    "Confirmar diretamente com a Ecolimpo a documentação e os requisitos necessários.",
+    "Aguardar o retorno da cooperativa; demonstrar interesse não garante entrada automática.",
 ];
 
 const leis = [
@@ -35,15 +36,16 @@ const leis = [
 
 export default function SocioCooperado() {
     return (
-        <main className="socio-page">
+        <main className="socio-page" id="conteudo">
+            <Seo title="Interesse em ser sócio-cooperado | Ecolimpo" description="Entenda como demonstrar interesse em participar da Cooperativa Ecolimpo e quais informações ainda precisam ser confirmadas." />
             <section className="socio-hero">
                 <div className="socio-hero-content">
                     <span>Trabalho cooperado</span>
                     <h1>Seja nosso sócio cooperado</h1>
                     <p>
-                        Entenda como funciona uma cooperativa, quais são as responsabilidades de
-                        quem ingressa como sócio e como a Ecolimpo organiza a rotina de trabalho,
-                        produção e repasse aos cooperados.
+                        Entenda o que significa participar de uma cooperativa e como demonstrar
+                        interesse. Requisitos, documentos e disponibilidade devem ser confirmados
+                        diretamente com a Ecolimpo.
                     </p>
                 </div>
             </section>
@@ -96,9 +98,7 @@ export default function SocioCooperado() {
                         <FaClock />
                         <h3>Carga horária e escala</h3>
                         <p>
-                            A jornada é organizada conforme a necessidade da coleta, do galpão e
-                            dos contratos atendidos. As escalas seguem a organização interna e
-                            devem observar os limites legais aplicáveis às cooperativas de trabalho.
+                            Escalas, horários e organização interna: <strong>[INFORMAÇÃO A CONFIRMAR]</strong>.
                         </p>
                     </article>
 
@@ -106,9 +106,7 @@ export default function SocioCooperado() {
                         <FaRecycle />
                         <h3>Ganho por produção</h3>
                         <p>
-                            O cooperado ganha de acordo com a produção e os resultados apurados.
-                            Não é salário fixo de empregado CLT; é participação no resultado da
-                            atividade cooperada, conforme regras internas.
+                            Forma de cálculo e regras de repasse: <strong>[INFORMAÇÃO A CONFIRMAR]</strong>.
                         </p>
                     </article>
 
@@ -116,9 +114,7 @@ export default function SocioCooperado() {
                         <FaBalanceScale />
                         <h3>Prazo de repasse</h3>
                         <p>
-                            O repasse da produção costuma sair entre 15 e 28 dias, podendo levar
-                            mais tempo em algumas situações. A Ecolimpo também depende dos
-                            pagamentos do SLU para pagar os cooperados.
+                            Prazos de repasse e condições aplicáveis: <strong>[INFORMAÇÃO A CONFIRMAR]</strong>.
                         </p>
                     </article>
                 </div>
@@ -129,8 +125,8 @@ export default function SocioCooperado() {
                     <span className="section-subtitle">Entrada na cooperativa</span>
                     <h2>Como demonstrar interesse</h2>
                     <p>
-                        A entrada de novos cooperados depende da necessidade operacional,
-                        disponibilidade de vagas, documentação e aceite das regras da cooperativa.
+                        A entrada não é automática. Documentos, requisitos, disponibilidade e
+                        etapas internas precisam ser confirmados diretamente com a cooperativa.
                     </p>
                 </div>
 

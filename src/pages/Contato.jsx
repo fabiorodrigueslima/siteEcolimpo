@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import "../styles/style.css";
-import { FaWhatsapp, FaInstagram, FaFacebookF, FaMapMarkerAlt } from "react-icons/fa";
+import { FaWhatsapp, FaFacebookF, FaMapMarkerAlt } from "react-icons/fa";
 import { MdEmail, MdPhone } from "react-icons/md";
+import Seo from "../components/Seo";
 
 export default function Contato() {
     useEffect(() => {
@@ -26,7 +27,8 @@ export default function Contato() {
     }, []);
 
     return (
-        <main className="contato-page">
+        <main className="contato-page" id="conteudo">
+            <Seo title="Contato | Cooperativa Ecolimpo" description="Fale com a Cooperativa Ecolimpo por telefone, e-mail ou WhatsApp e solicite informações sobre coleta seletiva." />
             <section className="contato-hero animate-page">
                 <span>Fale conosco</span>
                 <h1>Contato</h1>
@@ -43,15 +45,15 @@ export default function Contato() {
                             ADE PRO-DF CJ.01 Lote 9, Bonsucesso, São Sebastião - DF.
                         </p>
 
-                        <p>
+                        <a href="tel:+5561982372013" className="contact-line">
                             <MdPhone />
                             (61) 98237-2013
-                        </p>
+                        </a>
 
-                        <p>
+                        <a href="mailto:cooperativaecolimpodf@gmail.com" className="contact-line">
                             <MdEmail />
                             cooperativaecolimpodf@gmail.com
-                        </p>
+                        </a>
 
                         <a
                             href="https://wa.me/5561982372013"
@@ -67,10 +69,6 @@ export default function Contato() {
                             <h3>Nossas redes</h3>
 
                             <div className="contato-icons">
-                                <a href="https://www.instagram.com/" target="_blank" rel="noreferrer" aria-label="Instagram da Ecolimpo">
-                                    <FaInstagram />
-                                </a>
-
                                 <a href="https://www.facebook.com/cooperativaecolimpo/" target="_blank" rel="noreferrer" aria-label="Facebook da Ecolimpo">
                                     <FaFacebookF />
                                 </a>

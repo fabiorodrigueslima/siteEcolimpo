@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import "../styles/style.css";
 import Equipe from "../assets/Img/Cooperados.jpeg";
+import Seo from "../components/Seo";
 
 const diretoria = [
     ["JC", "Júlio César", "Presidente", "(61) 98182-8264"],
@@ -64,7 +65,8 @@ export default function QuemSomos() {
     }, []);
 
     return (
-        <main className="quem-somos-page">
+        <main className="quem-somos-page" id="conteudo">
+            <Seo title="Quem somos | Cooperativa Ecolimpo" description="Conheça a história, a missão e a organização da Cooperativa Ecolimpo, cooperativa de catadores de São Sebastião - DF." />
             <section className="quem-hero animate-page">
                 <div className="quem-hero-content">
                     <span>Cooperativa Ecolimpo</span>

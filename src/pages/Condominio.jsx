@@ -4,6 +4,7 @@ import "../styles/style.css";
 import LogoMonaco from "../assets/Img/condominios/Logo-Monaco.jpg";
 import LogoSanFrancisco from "../assets/Img/condominios/san-francisco-ii.png";
 import LogoParqueMirante from "../assets/Img/condominios/parque-mirante.png";
+import Seo from "../components/Seo";
 
 const formularioProposta =
     "https://docs.google.com/forms/d/1SCA6Ut7v60Fn8Cb4T0PWQCghAzwZlg7LDpbhF3YauE0/viewform";
@@ -33,7 +34,8 @@ const condominiosParceiros = [
 
 export default function Condominio() {
     return (
-        <main className="condominio-page">
+        <main className="condominio-page" id="conteudo">
+            <Seo title="Coleta seletiva para condomínios | Ecolimpo" description="Implante coleta seletiva no seu condomínio com orientação, planejamento e destinação correta de recicláveis pela Ecolimpo." />
             <section className="condominio-hero">
                 <div className="condominio-hero-content">
                     <span>Coleta seletiva para condomínios</span>
