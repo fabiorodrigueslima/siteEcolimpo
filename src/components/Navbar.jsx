@@ -43,6 +43,7 @@ export default function Navbar() {
             <div className="dropdown-menu">
               <NavLink to="/coleta-seletiva/slu" onClick={closeMenu}>Atendimento SLU</NavLink>
               <NavLink to="/condominio" onClick={closeMenu}>Condomínios</NavLink>
+              <NavLink to="/materiais-reciclaveis" onClick={closeMenu}>Materiais recicláveis</NavLink>
             </div>
           </div>
           <NavLink to="/educacao-ambiental" onClick={closeMenu}>Educação ambiental</NavLink>

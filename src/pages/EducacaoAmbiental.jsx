@@ -1,218 +1,23 @@
-import { useState, useEffect } from "react";
-import "../styles/style.css";
-
-import EducacaoImg from "../assets/Img/educacao-escolar.jpg";
-import galeria1 from "../assets/Img/galeria1.jpg";
-import galeria2 from "../assets/Img/galeria2.jpg";
-import galeria3 from "../assets/Img/galeria3.jpg";
-import galeria4 from "../assets/Img/galeria4.jpg";
 import Seo from "../components/Seo";
+import WhatsAppForm from "../components/WhatsAppForm";
+import EducacaoImg from "../assets/Img/educacao-escolar.jpg";
+
+const services = ["Palestras", "Rodas de conversa", "Gincanas sustentáveis", "Oficinas", "Campanhas de conscientização"];
+const fields = [
+  { name: "nome", label: "Nome", required: true, minLength: 2, autoComplete: "name" },
+  { name: "telefone", label: "Telefone", type: "tel", required: true, minLength: 8, autoComplete: "tel" },
+  { name: "email", label: "E-mail", type: "email", required: true, autoComplete: "email" },
+  { name: "instituicao", label: "Escola, empresa ou instituição", required: true, minLength: 2, autoComplete: "organization" },
+  { name: "regiao", label: "Região", required: true, minLength: 2, autoComplete: "address-level2" },
+  { name: "mensagem", label: "Atividade de interesse e mensagem", required: true, minLength: 10, multiline: true },
+];
 
 export default function EducacaoAmbiental() {
-    const [tipoServico, setTipoServico] = useState("");
-    const [form, setForm] = useState({
-        nome: "",
-        telefone: "",
-        email: "",
-        local: "",
-        mensagem: "",
-    });
-
-    useEffect(() => {
-        const elementos = document.querySelectorAll(".animate-page");
-
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("show");
-                    }
-                });
-            },
-            { threshold: 0.2 }
-        );
-
-        elementos.forEach((el) => observer.observe(el));
-
-        return () => {
-            elementos.forEach((el) => observer.unobserve(el));
-        };
-    }, [tipoServico]);
-
-    function abrirFormulario(servico) {
-        setTipoServico(servico);
-
-        setTimeout(() => {
-            document.querySelector(".form-solicitacao")?.scrollIntoView({ behavior: "smooth" });
-        }, 100);
-    }
-
-    function fecharFormulario() {
-        setTipoServico("");
-    }
-
-    function handleChange(e) {
-        setForm({ ...form, [e.target.name]: e.target.value });
-    }
-
-    function enviarSolicitacao(e) {
-        e.preventDefault();
-
-        const texto = `
-Olá, vim pelo site da Cooperativa Ecolimpo e quero solicitar: ${tipoServico}
-
-Nome: ${form.nome}
-Telefone: ${form.telefone}
-E-mail: ${form.email}
-Local: ${form.local}
-Mensagem: ${form.mensagem}
-`;
-
-        window.open(`https://wa.me/5561982372013?text=${encodeURIComponent(texto)}`, "_blank", "noopener,noreferrer");
-    }
-
-    return (
-        <main className="educacao-page" id="conteudo">
-            <Seo title="Educação ambiental no DF | Cooperativa Ecolimpo" description="Solicite palestras, gincanas e ações de educação ambiental da Cooperativa Ecolimpo para escolas, empresas e instituições." />
-            <section className="educacao-hero animate-page">
-                <div className="educacao-hero-content">
-                    <span>Consciência e sustentabilidade</span>
-                    <h1>Educação Ambiental</h1>
-                    <p>
-                        A Cooperativa Ecolimpo promove ações educativas para incentivar a
-                        separação correta dos materiais recicláveis e fortalecer o cuidado
-                        com o meio ambiente.
-                    </p>
-                </div>
-            </section>
-
-            <section className="educacao-intro animate-page">
-                <div className="educacao-container">
-                    <div className="educacao-img">
-                        <img src={EducacaoImg} alt="Educação ambiental da Ecolimpo" />
-                    </div>
-
-                    <div className="educacao-texto">
-                        <span>O que fazemos</span>
-                        <h2>Levamos conhecimento para escolas, empresas e instituições</h2>
-
-                        <p>
-                            Realizamos palestras, rodas de conversa e atividades educativas sobre
-                            reciclagem, coleta seletiva, preservação ambiental e responsabilidade social.
-                        </p>
-
-                        <p>
-                            Também desenvolvemos gincanas sustentáveis em escolas, envolvendo
-                            alunos, professores e comunidade.
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            <section className="educacao-cards animate-page" id="servicos-educacao">
-                <div className="educacao-card">
-                    <h3>Palestras</h3>
-                    <p>Educação ambiental em empresas e escolas.</p>
-                    <button type="button" onClick={() => abrirFormulario("Palestra")}>
-                        Solicitar
-                    </button>
-                </div>
-
-                <div className="educacao-card">
-                    <h3>Gincanas</h3>
-                    <p>Atividades práticas e educativas.</p>
-                    <button type="button" onClick={() => abrirFormulario("Gincana Sustentável")}>
-                        Solicitar
-                    </button>
-                </div>
-
-                <div className="educacao-card">
-                    <h3>Conscientização</h3>
-                    <p>Orientação sobre reciclagem e meio ambiente.</p>
-                    <button type="button" onClick={() => abrirFormulario("Conscientização Ambiental")}>
-                        Solicitar
-                    </button>
-                </div>
-            </section>
-
-            {tipoServico && (
-                <section className="form-solicitacao animate-page">
-                    <div className="form-container">
-                        <button className="form-close" type="button" onClick={fecharFormulario} aria-label="Fechar formulário">
-                            ×
-                        </button>
-
-                        <h2>Solicitar {tipoServico}</h2>
-
-                        <form onSubmit={enviarSolicitacao}>
-                            <label htmlFor="educacao-nome">Nome</label>
-                            <input id="educacao-nome" type="text" name="nome" autoComplete="name" value={form.nome} onChange={handleChange} required minLength="2" />
-                            <label htmlFor="educacao-telefone">Telefone</label>
-                            <input id="educacao-telefone" type="tel" name="telefone" autoComplete="tel" value={form.telefone} onChange={handleChange} required minLength="8" />
-                            <label htmlFor="educacao-email">E-mail</label>
-                            <input id="educacao-email" type="email" name="email" autoComplete="email" value={form.email} onChange={handleChange} required />
-                            <label htmlFor="educacao-local">Escola, empresa ou instituição</label>
-                            <input id="educacao-local" type="text" name="local" value={form.local} onChange={handleChange} required minLength="2" />
-                            <label htmlFor="educacao-mensagem">Mensagem</label>
-                            <textarea id="educacao-mensagem" name="mensagem" value={form.mensagem} onChange={handleChange} required minLength="10"></textarea>
-                            <p className="form-privacy">Ao continuar, os dados serão incluídos em uma mensagem que você poderá revisar antes de enviar pelo WhatsApp. Consulte a <a href="/privacidade">política de privacidade</a>.</p>
-
-                            <button type="submit">Enviar solicitação</button>
-                        </form>
-                    </div>
-                </section>
-            )}
-
-            <section className="educacao-como-funciona animate-page">
-                <span className="section-subtitle">Etapas</span>
-                <h2>Como funciona</h2>
-
-                <div className="como-grid">
-                    <div className="como-card">
-                        <strong>1</strong>
-                        <h3>Solicitação</h3>
-                        <p>Contato com a cooperativa.</p>
-                    </div>
-
-                    <div className="como-card">
-                        <strong>2</strong>
-                        <h3>Planejamento</h3>
-                        <p>Organização da atividade.</p>
-                    </div>
-
-                    <div className="como-card">
-                        <strong>3</strong>
-                        <h3>Execução</h3>
-                        <p>Realização da ação.</p>
-                    </div>
-
-                    <div className="como-card">
-                        <strong>4</strong>
-                        <h3>Impacto</h3>
-                        <p>Aprendizado sustentável.</p>
-                    </div>
-                </div>
-            </section>
-
-            <section className="galeria-educacao animate-page">
-                <span className="section-subtitle">Galeria</span>
-                <h2>Fotos</h2>
-
-                <div className="galeria-grid">
-                    <img src={galeria1} alt="Ação ambiental" />
-                    <img src={galeria2} alt="Palestra ambiental" />
-                    <img src={galeria3} alt="Gincana sustentável" />
-                    <img src={galeria4} alt="Coleta seletiva" />
-                </div>
-            </section>
-
-            <section className="educacao-cta animate-page">
-                <div className="educacao-cta-content">
-                    <h2>Leve educação ambiental para sua instituição</h2>
-                    <p>Solicite agora uma ação com a Ecolimpo.</p>
-                    <a href="#servicos-educacao">Solicitar</a>
-                </div>
-            </section>
-        </main>
-    );
+  return <main id="conteudo" className="educacao-page">
+    <Seo title="Educação ambiental para escolas no DF | Ecolimpo" description="Solicite palestras, rodas de conversa, oficinas e ações de educação ambiental da Ecolimpo para escolas, empresas e condomínios." />
+    <section className="page-hero"><div><p className="eyebrow">Conhecimento que transforma</p><h1>Educação ambiental para escolas, empresas e comunidades</h1><p>Ações educativas sobre separação de resíduos, coleta seletiva, reciclagem e valorização do trabalho dos catadores.</p><a className="button button-primary" href="#solicitar-acao">Solicitar palestra ou ação</a></div><img src={EducacaoImg} alt="Atividade de educação ambiental com estudantes" width="720" height="480" /></section>
+    <section className="section"><div className="section-heading"><p className="eyebrow">Formatos</p><h2>Ações adaptadas ao contexto da instituição</h2></div><div className="card-grid">{services.map(item=><article className="info-card" key={item}><h3>{item}</h3><p>Formato, duração, público e quantidade de participantes são combinados após o primeiro contato.</p></article>)}</div></section>
+    <section className="section section-tinted"><div className="section-heading"><p className="eyebrow">Agendamento</p><h2>Como funciona</h2></div><ol className="process-grid">{["Envie a solicitação","Alinhe público e objetivo","Defina formato e data","Confirme a atividade"].map((item,index)=><li key={item}><span>{index+1}</span>{item}</li>)}</ol></section>
+    <section className="section proposal-section" id="solicitar-acao"><div><p className="eyebrow">Vamos conversar</p><h2>Solicite uma ação educativa</h2><p>Preencha os dados essenciais. Você poderá revisar toda a mensagem antes de confirmar o envio no WhatsApp.</p></div><WhatsAppForm context="Educação ambiental" fields={fields}/></section>
+  </main>;
 }

@@ -1,6 +1,4 @@
 import {
-    FaBalanceScale,
-    FaClock,
     FaHandshake,
     FaPeopleCarry,
     FaRecycle,
@@ -8,6 +6,7 @@ import {
 } from "react-icons/fa";
 import "../styles/style.css";
 import Seo from "../components/Seo";
+import { whatsappMessages, whatsappUrl } from "../data/site";
 
 const etapas = [
     "Conversar com a cooperativa e conhecer a rotina de trabalho.",
@@ -81,42 +80,7 @@ export default function SocioCooperado() {
                         <p>Diretoria e coordenações ajudam a conduzir escala, disciplina e produção.</p>
                     </div>
 
-                    <div>
-                        <FaRecycle />
-                        <strong>O ganho vem da produção</strong>
-                        <p>A remuneração depende do resultado, dos contratos e da produção apurada.</p>
-                    </div>
-                </div>
-            </section>
-
-            <section className="socio-regras">
-                <span className="section-subtitle">Como funciona na prática</span>
-                <h2>Rotina, produção e repasse</h2>
-
-                <div className="socio-regras-grid">
-                    <article>
-                        <FaClock />
-                        <h3>Carga horária e escala</h3>
-                        <p>
-                            Escalas, horários e organização interna: <strong>[INFORMAÇÃO A CONFIRMAR]</strong>.
-                        </p>
-                    </article>
-
-                    <article>
-                        <FaRecycle />
-                        <h3>Ganho por produção</h3>
-                        <p>
-                            Forma de cálculo e regras de repasse: <strong>[INFORMAÇÃO A CONFIRMAR]</strong>.
-                        </p>
-                    </article>
-
-                    <article>
-                        <FaBalanceScale />
-                        <h3>Prazo de repasse</h3>
-                        <p>
-                            Prazos de repasse e condições aplicáveis: <strong>[INFORMAÇÃO A CONFIRMAR]</strong>.
-                        </p>
-                    </article>
+                    <div><FaRecycle /><strong>Há direitos e deveres</strong><p>A participação segue o estatuto, o regimento e as decisões coletivas.</p></div>
                 </div>
             </section>
 
@@ -161,7 +125,7 @@ export default function SocioCooperado() {
                     </p>
                 </div>
 
-                <a href="https://wa.me/5561982372013" target="_blank" rel="noreferrer">
+                <a href={whatsappUrl(whatsappMessages.cooperado)} target="_blank" rel="noopener noreferrer">
                     <FaWhatsapp />
                     Falar pelo WhatsApp
                 </a>

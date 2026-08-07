@@ -1,102 +1,12 @@
-import { useEffect } from "react";
-import "../styles/style.css";
-import { FaWhatsapp, FaFacebookF, FaMapMarkerAlt } from "react-icons/fa";
+import { FaFacebookF, FaMapMarkerAlt, FaWhatsapp } from "react-icons/fa";
 import { MdEmail, MdPhone } from "react-icons/md";
 import Seo from "../components/Seo";
+import { site, whatsappMessages, whatsappUrl } from "../data/site";
 
 export default function Contato() {
-    useEffect(() => {
-        const elementos = document.querySelectorAll(".animate-page");
-
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("show");
-                    }
-                });
-            },
-            { threshold: 0.2 }
-        );
-
-        elementos.forEach((el) => observer.observe(el));
-
-        return () => {
-            elementos.forEach((el) => observer.unobserve(el));
-        };
-    }, []);
-
-    return (
-        <main className="contato-page" id="conteudo">
-            <Seo title="Contato | Cooperativa Ecolimpo" description="Fale com a Cooperativa Ecolimpo por telefone, e-mail ou WhatsApp e solicite informações sobre coleta seletiva." />
-            <section className="contato-hero animate-page">
-                <span>Fale conosco</span>
-                <h1>Contato</h1>
-                <p>Entre em contato com a Cooperativa Ecolimpo.</p>
-            </section>
-
-            <section className="contato-section animate-page">
-                <div className="contato-container">
-                    <div className="contato-info">
-                        <h2>Cooperativa Ecolimpo</h2>
-
-                        <p>
-                            <FaMapMarkerAlt />
-                            ADE PRO-DF CJ.01 Lote 9, Bonsucesso, São Sebastião - DF.
-                        </p>
-
-                        <a href="tel:+5561982372013" className="contact-line">
-                            <MdPhone />
-                            (61) 98237-2013
-                        </a>
-
-                        <a href="mailto:cooperativaecolimpodf@gmail.com" className="contact-line">
-                            <MdEmail />
-                            cooperativaecolimpodf@gmail.com
-                        </a>
-
-                        <a
-                            href="https://wa.me/5561982372013"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="contato-whatsapp"
-                        >
-                            <FaWhatsapp />
-                            Falar no WhatsApp
-                        </a>
-
-                        <div className="contato-redes">
-                            <h3>Nossas redes</h3>
-
-                            <div className="contato-icons">
-                                <a href="https://www.facebook.com/cooperativaecolimpo/" target="_blank" rel="noreferrer" aria-label="Facebook da Ecolimpo">
-                                    <FaFacebookF />
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="contato-mapa">
-                        <iframe
-                            src="https://www.google.com/maps?q=-15.9096691,-47.7772288&z=17&output=embed"
-                            width="100%"
-                            height="420"
-                            style={{ border: 0 }}
-                            loading="lazy"
-                            title="Mapa da Cooperativa Ecolimpo"
-                        ></iframe>
-
-                        <a
-                            href="https://www.google.com/maps/place/Cooperativa+Ecolimpo/@-15.9096639,-47.7798037,17z"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="btn-mapa"
-                        >
-                            Ver no Google Maps
-                        </a>
-                    </div>
-                </div>
-            </section>
-        </main>
-    );
+  return <main id="conteudo" className="contato-page">
+    <Seo title="Contato | Cooperativa Ecolimpo" description="Fale com a Cooperativa Ecolimpo sobre coleta seletiva, propostas e educação ambiental no Distrito Federal." />
+    <section className="page-title"><p className="eyebrow">Fale conosco</p><h1>Contato</h1><p>Escolha o canal e informe o tipo de atendimento que procura.</p></section>
+    <section className="contato-section"><div className="contato-container"><div className="contato-info"><h2>Cooperativa Ecolimpo</h2><p><FaMapMarkerAlt aria-hidden="true" />{site.address}</p><a href={site.phoneHref} className="contact-line"><MdPhone aria-hidden="true" />{site.phoneDisplay}</a><a href={`mailto:${site.email}`} className="contact-line"><MdEmail aria-hidden="true" />{site.email}</a><a href={whatsappUrl(whatsappMessages.geral)} target="_blank" rel="noopener noreferrer" className="contato-whatsapp"><FaWhatsapp aria-hidden="true" />Falar no WhatsApp</a><div className="contato-redes"><h3>Rede social confirmada</h3><a href={site.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook da Ecolimpo"><FaFacebookF aria-hidden="true" /> Facebook</a></div></div><div className="contato-mapa"><iframe src={site.mapsEmbed} width="100%" height="420" style={{border:0}} loading="lazy" title="Mapa da Cooperativa Ecolimpo"/><a href={site.mapsUrl} target="_blank" rel="noopener noreferrer" className="btn-mapa">Abrir no Google Maps</a></div></div></section>
+  </main>;
 }

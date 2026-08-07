@@ -1,6 +1,7 @@
 import "../styles/style.css";
 import { FaTruck, FaRecycle, FaMapMarkerAlt, FaLeaf } from "react-icons/fa";
 import Seo from "../components/Seo";
+import { whatsappMessages, whatsappUrl } from "../data/site";
 
 export default function SLU() {
     return (
@@ -180,7 +181,7 @@ export default function SLU() {
                     preservar o meio ambiente e valorizar o trabalho dos cooperados.
                 </p>
 
-                <a href="https://wa.me/5561982372013" target="_blank" rel="noreferrer" className="slu-btn">
+                <a href={whatsappUrl(whatsappMessages.coleta)} target="_blank" rel="noopener noreferrer" className="slu-btn">
                     Falar com a Ecolimpo
                 </a>
             </section>

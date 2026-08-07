@@ -12,6 +12,7 @@ import Condominio from "./pages/Condominio";
 import SocioCooperado from "./pages/SocioCooperado";
 import Privacidade from "./pages/Privacidade";
 import NotFound from "./pages/NotFound";
+import Materiais from "./pages/Materiais";
 
 function RouteEffects() {
   const { pathname } = useLocation();
@@ -36,6 +37,7 @@ export default function App() {
         <Route path="/condominio" element={<Condominio />} />
         <Route path="/socio-cooperado" element={<SocioCooperado />} />
         <Route path="/privacidade" element={<Privacidade />} />
+        <Route path="/materiais-reciclaveis" element={<Materiais />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
