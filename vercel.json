@@ -1,12 +1,30 @@
 {
   "outputDirectory": "build",
   "rewrites": [
+    { "source": "/quem-somos", "destination": "/quem-somos/index.html" },
+    { "source": "/coleta-seletiva/slu", "destination": "/coleta-seletiva/slu/index.html" },
+    { "source": "/condominio", "destination": "/condominio/index.html" },
+    { "source": "/educacao-ambiental", "destination": "/educacao-ambiental/index.html" },
+    { "source": "/materiais-reciclaveis", "destination": "/materiais-reciclaveis/index.html" },
+    { "source": "/socio-cooperado", "destination": "/socio-cooperado/index.html" },
+    { "source": "/contato", "destination": "/contato/index.html" },
+    { "source": "/privacidade", "destination": "/privacidade/index.html" },
     {
       "source": "/((?!sitemap.xml|robots.txt|Nova-logo.png|favicon.svg|icons.svg|assets/.*).*)",
       "destination": "/index.html"
     }
   ],
   "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "Content-Security-Policy", "value": "default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; script-src 'self'; frame-src https://www.google.com; connect-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests" },
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" },
+        { "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains; preload" }
+      ]
+    },
     {
       "source": "/sitemap.xml",
       "headers": [

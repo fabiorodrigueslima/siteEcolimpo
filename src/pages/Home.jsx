@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { FaBuilding, FaChalkboardTeacher, FaHandsHelping, FaRecycle, FaTruck, FaUsers } from "react-icons/fa";
 import Cooperados from "../assets/Img/Cooperados.jpeg";
 import Seo from "../components/Seo";
-import { areasServed, impactIndicators, whatsappUrl } from "../data/site";
+import { areasServed, whatsappMessages, whatsappUrl } from "../data/site";
 
 const services = [
   { icon: FaTruck, title: "Coleta seletiva", text: "Coleta e encaminhamento correto dos materiais recicláveis." },
@@ -23,11 +23,13 @@ export default function Home() {
       <section className="hero">
         <div className="hero-content">
           <p className="eyebrow">Cooperativa de catadores no Distrito Federal</p>
-          <h1>Reciclagem que cuida do meio ambiente e valoriza pessoas</h1>
-          <p>A Ecolimpo realiza coleta seletiva, triagem e destinação correta de recicláveis, fortalecendo o trabalho dos catadores e a comunidade.</p>
+          <h1>Coleta seletiva que transforma resíduos em trabalho, renda e sustentabilidade.</h1>
+          <p>A Ecolimpo atende condomínios, empresas, escolas e comunidades com coleta seletiva, triagem, educação ambiental e destinação correta dos materiais recicláveis no Distrito Federal.</p>
           <div className="button-row">
-            <Link className="button button-primary" to="/contato">Solicitar coleta</Link>
-            <a className="button button-whatsapp" href={whatsappUrl("Olá! Gostaria de saber mais sobre a coleta seletiva da Ecolimpo.")} target="_blank" rel="noopener noreferrer">Falar pelo WhatsApp</a>
+            <Link className="button button-primary" to="/condominio#proposta-condominio">Solicitar uma proposta</Link>
+            <a className="button button-whatsapp" href={whatsappUrl(whatsappMessages.geral)} target="_blank" rel="noopener noreferrer">Falar pelo WhatsApp</a>
+            <Link className="button button-secondary" to="/coleta-seletiva/slu">Consultar dias da coleta</Link>
+            <Link className="button button-secondary" to="/educacao-ambiental#solicitar-acao">Solicitar palestra</Link>
           </div>
         </div>
         <div className="hero-image">
@@ -73,35 +75,23 @@ export default function Home() {
         </ol>
       </section>
 
-      <section className="section impact-section">
-        <div className="section-heading">
-          <p className="eyebrow">Nosso impacto</p>
-          <h2>Resultados cadastrados pela cooperativa</h2>
-          <p className="data-note">Última atualização: <strong>[INFORMAÇÃO A CONFIRMAR]</strong></p>
-        </div>
-        <div className="impact-grid">
-          {impactIndicators.map((item) => <article key={item.label}><strong>{item.value}</strong><span>{item.label}</span></article>)}
-        </div>
-      </section>
-
       <section className="section materials-section">
         <div>
           <p className="eyebrow">Separação responsável</p>
           <h2>Materiais recicláveis</h2>
-          <p>As regras detalhadas de materiais aceitos e itens que não devem ser misturados precisam ser validadas pela cooperativa.</p>
+          <p>Aprenda a preparar os recicláveis com segurança e confirme itens específicos antes da coleta.</p>
         </div>
         <div className="confirm-card">
-          <h3>Orientação oficial</h3>
-          <p><strong>[INFORMAÇÃO A CONFIRMAR]</strong></p>
-          <p>Enquanto isso, consulte a Ecolimpo antes de separar materiais sobre os quais tenha dúvida.</p>
-          <a className="text-link" href={whatsappUrl("Olá! Gostaria de confirmar quais materiais a Ecolimpo recebe.")} target="_blank" rel="noopener noreferrer">Perguntar pelo WhatsApp →</a>
+          <h3>Separação responsável</h3>
+          <p>Mantenha os materiais secos, sem resíduos orgânicos e proteja partes cortantes.</p>
+          <Link className="text-link" to="/materiais-reciclaveis">Ver orientações →</Link>
         </div>
       </section>
 
       <section className="section section-tinted">
         <div className="section-heading">
           <p className="eyebrow">Onde atuamos</p>
-          <h2>Áreas confirmadas no projeto</h2>
+          <h2>Regiões informadas nas rotas atuais</h2>
         </div>
         <ul className="area-list">{areasServed.map((area) => <li key={area}>{area}</li>)}</ul>
         <Link className="text-link" to="/coleta-seletiva/slu">Ver dias e turnos da coleta SLU →</Link>

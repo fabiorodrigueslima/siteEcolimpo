@@ -16,6 +16,7 @@ export default function Footer() {
           <Link to="/quem-somos">Quem somos</Link>
           <Link to="/coleta-seletiva/slu">Coleta seletiva</Link>
           <Link to="/condominio">Condomínios</Link>
+          <Link to="/materiais-reciclaveis">Materiais recicláveis</Link>
           <Link to="/educacao-ambiental">Educação ambiental</Link>
           <Link to="/contato">Contato</Link>
           <Link to="/privacidade">Política de privacidade</Link>

@@ -1,194 +1,29 @@
-import { FaBuilding, FaClipboardCheck, FaExternalLinkAlt, FaRecycle, FaWhatsapp } from "react-icons/fa";
-import "../styles/style.css";
-
-import LogoMonaco from "../assets/Img/condominios/Logo-Monaco.jpg";
-import LogoSanFrancisco from "../assets/Img/condominios/san-francisco-ii.png";
-import LogoParqueMirante from "../assets/Img/condominios/parque-mirante.png";
+import { FaBuilding, FaClipboardCheck, FaRecycle, FaUsers } from "react-icons/fa";
 import Seo from "../components/Seo";
+import WhatsAppForm from "../components/WhatsAppForm";
+import Cooperados from "../assets/Img/Cooperados.jpeg";
 
-const formularioProposta =
-    "https://docs.google.com/forms/d/1SCA6Ut7v60Fn8Cb4T0PWQCghAzwZlg7LDpbhF3YauE0/viewform";
-
-const formularioEmbed = `${formularioProposta}?embedded=true`;
-
-const condominiosParceiros = [
-    {
-        nome: "Condomínio Monâco",
-        regiao: "Região do Tororó - DF",
-        descricao: "Parceria para coleta seletiva, orientação ambiental e destinação correta dos recicláveis.",
-        logo: LogoMonaco,
-    },
-    {
-        nome: "San Francisco II",
-        regiao: "Condomínio residencial",
-        descricao: "Atendimento planejado para apoiar a rotina de separação e coleta dos materiais recicláveis.",
-        logo: LogoSanFrancisco,
-    },
-    {
-        nome: "Parque do Mirante",
-        regiao: "Região do Tororó - DF",
-        descricao: "Coleta seletiva organizada em parceria com a administração e moradores do condomínio.",
-        logo: LogoParqueMirante,
-    },
+const benefits = [
+  [FaClipboardCheck, "Diagnóstico", "Entendimento da rotina, do espaço disponível e das necessidades do condomínio."],
+  [FaBuilding, "Planejamento", "Definição conjunta da operação e da frequência após avaliação."],
+  [FaUsers, "Orientação", "Comunicação clara para administração, equipe e moradores."],
+  [FaRecycle, "Coleta e destinação", "Retirada organizada e encaminhamento dos materiais recicláveis."],
+];
+const fields = [
+  { name: "nome", label: "Nome", required: true, minLength: 2, autoComplete: "name" },
+  { name: "condominio", label: "Condomínio", required: true, minLength: 2, autoComplete: "organization" },
+  { name: "telefone", label: "Telefone", type: "tel", required: true, minLength: 8, autoComplete: "tel" },
+  { name: "regiao", label: "Região", required: true, minLength: 2, autoComplete: "address-level2" },
+  { name: "mensagem", label: "Mensagem", required: true, minLength: 10, multiline: true },
 ];
 
 export default function Condominio() {
-    return (
-        <main className="condominio-page" id="conteudo">
-            <Seo title="Coleta seletiva para condomínios | Ecolimpo" description="Implante coleta seletiva no seu condomínio com orientação, planejamento e destinação correta de recicláveis pela Ecolimpo." />
-            <section className="condominio-hero">
-                <div className="condominio-hero-content">
-                    <span>Coleta seletiva para condomínios</span>
-                    <h1>Parcerias na região do Tororó</h1>
-                    <p>
-                        A Cooperativa Ecolimpo atua em parceria com condomínios da região do
-                        Tororó, oferecendo coleta seletiva organizada, orientação ambiental e
-                        destinação correta dos materiais recicláveis.
-                    </p>
-                </div>
-            </section>
-
-            <section className="condominio-intro">
-                <div className="condominio-intro-text">
-                    <span className="section-subtitle">Atendimento residencial</span>
-                    <h2>Uma solução prática para condomínios que querem reciclar melhor</h2>
-                    <p>
-                        Cada condomínio possui uma rotina diferente. Por isso, o atendimento é
-                        planejado considerando volume de resíduos, espaço de armazenamento,
-                        frequência de coleta e necessidade de sensibilização dos moradores.
-                    </p>
-                </div>
-
-                <div className="condominio-beneficios">
-                    <div>
-                        <FaRecycle />
-                        <strong>Coleta seletiva</strong>
-                        <p>Retirada dos recicláveis com encaminhamento ambientalmente correto.</p>
-                    </div>
-
-                    <div>
-                        <FaClipboardCheck />
-                        <strong>Planejamento</strong>
-                        <p>Definição de frequência, horários e orientações para a administração.</p>
-                    </div>
-
-                    <div>
-                        <FaBuilding />
-                        <strong>Condomínios</strong>
-                        <p>Atendimento voltado para residenciais, síndicos e administradoras.</p>
-                    </div>
-                </div>
-            </section>
-
-            <section className="condominio-parceiros">
-                <span className="section-subtitle">Condomínios parceiros</span>
-                <h2>Quem já caminha com a Ecolimpo</h2>
-
-                <div className="condominio-grid">
-                    {condominiosParceiros.map((condominio) => (
-                        <article className="condominio-card" key={condominio.nome}>
-                            <div className="condominio-logo">
-                                <img src={condominio.logo} alt={`Logo ${condominio.nome}`} />
-                            </div>
-
-                            <h3>{condominio.nome}</h3>
-                            <small>{condominio.regiao}</small>
-                            <p>{condominio.descricao}</p>
-                        </article>
-                    ))}
-                </div>
-            </section>
-
-            <section className="condominio-cta-final">
-                <div className="condominio-cta-bg"></div>
-                <div className="condominio-cta-overlay"></div>
-                <div className="condominio-light"></div>
-
-                <div className="condominio-cta-container">
-                    <div className="condominio-cta-content">
-                        <span className="condominio-cta-tag">Solução completa para síndicos e administradoras</span>
-
-                        <h2>Implante uma coleta seletiva organizada no seu condomínio</h2>
-
-                        <p>
-                            A Ecolimpo ajuda o condomínio a sair da intenção para a prática:
-                            avaliamos a rotina, planejamos a coleta, orientamos moradores e
-                            encaminhamos os recicláveis para destinação correta.
-                        </p>
-
-                        <div className="condominio-cta-numbers">
-                            <div>
-                                <strong>3</strong>
-                                <span>Condomínios parceiros destacados</span>
-                            </div>
-
-                            <div>
-                                <strong>Tororó</strong>
-                                <span>Atendimento regional planejado</span>
-                            </div>
-
-                            <div>
-                                <strong>SLU</strong>
-                                <span>Experiência com coleta seletiva</span>
-                            </div>
-                        </div>
-
-                        <div className="condominio-cta-infos">
-                            <div className="cta-info-card">
-                                <strong>Diagnóstico da rotina</strong>
-                                <span>Avaliamos espaço, volume e melhor frequência de coleta.</span>
-                            </div>
-
-                            <div className="cta-info-card">
-                                <strong>Comunicação com moradores</strong>
-                                <span>Orientação simples para melhorar a separação dos recicláveis.</span>
-                            </div>
-
-                            <div className="cta-info-card">
-                                <strong>Proposta objetiva</strong>
-                                <span>O formulário reúne os dados necessários para retornarmos com clareza.</span>
-                            </div>
-                        </div>
-
-                        <div className="condominio-cta-buttons">
-                            <a href="#proposta-condominio" className="cta-whatsapp">
-                                Solicitar proposta
-                            </a>
-
-                            <a href={formularioProposta} target="_blank" rel="noreferrer" className="cta-formulario">
-                                Abrir formulário
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section className="condominio-orcamento" id="proposta-condominio">
-                <div className="condominio-orcamento-text">
-                    <span className="section-subtitle">Solicite uma proposta</span>
-                    <h2>Orçamento para coleta seletiva</h2>
-                    <p>
-                        Preencha o formulário de proposta para avaliarmos a melhor frequência de
-                        coleta e retornarmos com uma solução adequada ao condomínio.
-                    </p>
-
-                    <a href={formularioProposta} target="_blank" rel="noreferrer" className="condominio-form-link">
-                        Abrir formulário em nova aba
-                        <FaExternalLinkAlt />
-                    </a>
-
-                    <a href="https://wa.me/5561982372013" target="_blank" rel="noreferrer" className="condominio-whatsapp-link">
-                        <FaWhatsapp />
-                        Tirar dúvidas pelo WhatsApp
-                    </a>
-                </div>
-
-                <div className="condominio-form-frame">
-                    <iframe src={formularioEmbed} title="Formulário de proposta para coleta seletiva" loading="lazy">
-                        Carregando formulário de proposta...
-                    </iframe>
-                </div>
-            </section>
-        </main>
-    );
+  return <main id="conteudo" className="condominio-page">
+    <Seo title="Coleta seletiva para condomínios no DF | Ecolimpo" description="Leve coleta seletiva organizada, orientação aos moradores e destinação correta para seu condomínio no Distrito Federal." />
+    <section className="page-hero"><div><p className="eyebrow">Síndicos e administradoras</p><h1>Leve uma coleta seletiva organizada e educativa para o seu condomínio.</h1><p>A Ecolimpo avalia a rotina do local, orienta moradores e planeja uma solução adequada para a separação e coleta dos recicláveis.</p><a className="button button-primary" href="#proposta-condominio">Solicitar uma proposta</a></div><img src={Cooperados} alt="Equipe da Cooperativa Ecolimpo" width="722" height="542" /></section>
+    <section className="section"><div className="section-heading"><p className="eyebrow">Atendimento planejado</p><h2>Da avaliação à coleta</h2></div><div className="card-grid">{benefits.map(([Icon,title,text]) => <article className="info-card" key={title}><Icon aria-hidden="true"/><h3>{title}</h3><p>{text}</p></article>)}</div></section>
+    <section className="section section-tinted"><div className="section-heading"><p className="eyebrow">Implantação</p><h2>Um processo simples e acompanhado</h2></div><ol className="process-grid">{["Solicitação inicial","Diagnóstico da rotina","Proposta e planejamento","Orientação aos moradores","Início e acompanhamento"].map((item,index)=><li key={item}><span>{index+1}</span>{item}</li>)}</ol></section>
+    <section className="section faq"><div className="section-heading"><p className="eyebrow">Dúvidas frequentes</p><h2>Antes de solicitar</h2></div><details><summary>A frequência é igual para todos?</summary><p>Não. A frequência é definida após avaliar a rotina, o volume e a estrutura do condomínio.</p></details><details><summary>A Ecolimpo orienta os moradores?</summary><p>A orientação faz parte do planejamento e ajuda a reduzir erros na separação.</p></details><details><summary>O formulário já envia meus dados?</summary><p>Não. Ele prepara uma mensagem para você revisar e confirmar no WhatsApp.</p></details></section>
+    <section className="section proposal-section" id="proposta-condominio"><div><p className="eyebrow">Solicite uma proposta</p><h2>Conte um pouco sobre o condomínio</h2><p>As informações ajudam a organizar o primeiro atendimento. Nenhum dado é enviado automaticamente.</p></div><WhatsAppForm context="Proposta para condomínio" fields={fields}/></section>
+  </main>;
 }
